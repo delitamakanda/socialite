@@ -2,5 +2,5 @@
 
 work in progress
 
-#### materialize framework by Google guidelines
-https://getmdl.io/index.html
+## help
+[materialize framework by Google guidelines](https://getmdl.io/index.html)
