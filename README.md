@@ -1,5 +1,5 @@
 # socialite
-![logo](https://codeship.com/projects/socialite/status?branch=master)
+![logo](https://codeship.com/projects/fda370c0-da6c-0134-0795-3a4993b56c58/status?branch=master)
 
 work in progress
 
