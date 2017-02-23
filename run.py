@@ -8,6 +8,9 @@ def index():
 
 @app.route('/user/<name>')
 def user(name):
+	user = load_user(name):
+	if not user:
+		abort(404)
 	return '<h1>app work %s!</h1>' % name
 
 if __name__ == '__main__':
