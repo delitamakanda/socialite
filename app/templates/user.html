@@ -1,1 +1,5 @@
-Hello {{ user }}
+{% extends "base.html" %}
+{% block title %}{{ user }} 's profile{% endblock %}
+{% block content %}
+ Hello {{ user }}
+{% endblock %}
