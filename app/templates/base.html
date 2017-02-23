@@ -3,16 +3,13 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% if title %}
-        <title>{{ title }} - Social Application</title>
-        {% else %}
-        <title>Welcome to socialite</title>
-        {% endif %}
+        <title>{% block title %}{% endblock %} - socialite app</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-red.min.css">
     </head>
     <body>
-        <h1>app works ! </h1>
+        {% block content %}
+        {% endblock %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
