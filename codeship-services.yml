@@ -1,12 +1,2 @@
-app:
-  build:
-     image: codeship/janus
-     dockerfile: Dockerfile
-test:
-  build:
-     image: codeship/janus
-     dockerfile: Dockerfile
-  command: make migrate
-  links:
-     - postgres
-  add_docker: true
+busybox:
+  image: busybox
