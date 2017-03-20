@@ -1,66 +1,52 @@
 - type: parallel
-name: testing
   steps:
-    - type: serial
-      name: prepare_site
-      steps:
-        - name: jet_release_notes
-          service: aws
-          command: sh bin/jet.sh
-        - name: build
-          service: documentation
-          command: bash bin/build.sh
-        - name: post-process
-          service: documentation
-          command: gulp post-process
-    - type: serial
-      name: linters
-      service: documentation
-      steps:
-        - name: SCSS
-          command: bundle exec scss-lint
-        - name: JSON
-          command: gulp lint
-        - name: Jekyll
-          command: bundle exec jekyll doctor
-- name: fail_master_on_forks
-  service: documentation
-  tag: master
-  command: sh bin/check_fork.sh
-- type: parallel
-  name: deploying
-  tag: "^(master|staging/.*|private/.*)$"
-  steps:
-    - type: serial
-      name: s3_deployment
-      steps:
-        - name: s3_sync
-          service: aws
-          command: sh bin/s3.sh sync
-        - name: s3_redirects
-          service: aws
-          command: sh bin/s3.sh configure_redirects
-        - type: serial
-          tag: "^master$"
-          steps:
-            - name: s3_website
-              service: aws
-              command: sh bin/s3.sh configure_website _website.json
-            - name: s3_lifecycle
-              service: aws
-              command: sh bin/s3.sh configure_lifecycle _lifecycle.json
-            - name: swiftype
-              service: documentation
-              command: sh bin/swiftype.sh
-    - type: push
-      tag: "^master$"
-      name: push_docker_hub
-      service: documentation
-      image_name: codeship/documentation
-      image_tag: latest
-      registry: https://index.docker.io/v1/
-      encrypted_dockercfg_path: dockercfg.encrypted
-- name: Notify Slack
-  service: documentation
-  tag: "^(master|staging/.*|private/.*)$"
-  command: bash bin/notify_slack.sh
+    - service: busybox
+      command: echo 1
+    - service: busybox
+      command: echo 2
+    - service: busybox
+      command: echo 3
+    - service: busybox
+      command: echo 4
+    - service: busybox
+      command: echo 5
+    - service: busybox
+      command: echo 6
+    - service: busybox
+      command: echo 7
+    - service: busybox
+      command: echo 8
+    - service: busybox
+      command: echo 9
+    - service: busybox
+      command: echo 10
+    - service: busybox
+      command: echo 11
+    - service: busybox
+      command: echo 12
+    - service: busybox
+      command: echo 13
+    - service: busybox
+      command: echo 14
+    - service: busybox
+      command: echo 15
+    - service: busybox
+      command: echo 16
+    - service: busybox
+      command: echo 17
+    - service: busybox
+      command: echo 18
+    - service: busybox
+      command: echo 19
+    - service: busybox
+      command: echo 20
+    - service: busybox
+      command: echo 21
+    - service: busybox
+      command: echo 22
+    - service: busybox
+      command: echo 23
+    - service: busybox
+      command: echo 24
+    - service: busybox
+      command: echo 25
