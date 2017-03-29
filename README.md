@@ -3,5 +3,5 @@
 
 work in progress
 
-## help
+## front-end
 [materialize framework by Google guidelines](https://getmdl.io/index.html)
