@@ -8,7 +8,7 @@ class Config:
 	FLASKY_MAIL_SENDER = 'Socialite teams <delita.makanda@gmail.com>'
 	FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 
-	@static_method
+	@staticmethod
 	def init_app(app):
 		pass
 
