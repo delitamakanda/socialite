@@ -1,27 +1,39 @@
-from flask import Flask, request, render_template, session, redirect, url_for, flash
-app = Flask(__name__)
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
 
-@app.route('/')
-def index():
-	user_agent = request.headers.get('User-Agent')
-	#return '<h1>app work! Your browser is %s</h1>' % user_agent
-	return render_template('index.html')
+class Config:
+	SECRET_KEY = os.environ.get('SECRET_KEY')
+	SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+	FLASKY_MAIL_SUBJECT_PREFIX = '[Socialite]'
+	FLASKY_MAIL_SENDER = 'Socialite teams <delita.makanda@gmail.com>'
+	FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 
-@app.route('/user/<name>')
-def user(name):
-	user = load_user(name):
-	if not user:
-		abort(404)
-	#return '<h1>app work %s!</h1>' % name
-	return render_template('user.html', name=name)
+	@static_method
+	def init_app(app):
+		pass
 
-@app.errorhandler(400):
-def page_not_found(e):
-	return render_template('404.html'), 404
+class DevelopmentConfig(Config):
+	"""docstring for DevelopmentConfig."""
+	DEBUG = True
 
-@app.errorhandler(500):
-def internal_server_error(e):
-	return render_template('500.html'), 500
+	MAIL_SERVER = 'smtp.googlemail.com'
+	MAIL_PORT = 587
+	MAIL_USE_TLS = True
+	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+	SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 
-if __name__ == '__main__':
-	app.run(debug=True)
+class TestingConfig(Config):
+	TESTING = True
+	SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
+
+class ProductionConfig(Config):
+	SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+
+config = {
+	'development': DevelopmentConfig,
+	'testing': TestingConfig,
+	'production': ProductionConfig,
+
+	'default': DevelopmentConfig
+}
