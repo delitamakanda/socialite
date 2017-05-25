@@ -1,6 +1,26 @@
-
 {% extends "base.html" %}
 {% block title %}404{% endblock %}
+
+{% block head %}
+{{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block dashboard %}
+{% include 'partials/dashboard.html' %}
+{% endblock %}
+
 {% block content %}
- Page not found
+
+ <h1>Page not found</h1>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
 {% endblock %}

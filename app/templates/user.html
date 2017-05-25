@@ -1,5 +1,27 @@
 {% extends "base.html" %}
 {% block title %}{{ user }} 's profile{% endblock %}
+
+{% block head %}
+{{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block dashboard %}
+{{ super() }}
+{% endblock %}
+
 {% block content %}
+{{ super() }}
  Hello {{ user }}
+{% endblock %}
+
+
+
+{% block scripts %}
+{{ super() }}
 {% endblock %}

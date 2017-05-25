@@ -1,5 +1,26 @@
 {% extends "base.html" %}
 {% block title %}500{% endblock %}
+
+{% block head %}
+{{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block dashboard %}
+{% include 'partials/dashboard.html' %}
+{% endblock %}
+
 {% block content %}
- Internal server error
+
+ <h1>Internal server error</h1>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
 {% endblock %}
