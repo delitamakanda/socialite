@@ -5,3 +5,9 @@ work in progress
 
 ## front-end
 [materialize framework by Google guidelines](https://getmdl.io/index.html)
+
+
+## commands
+* python manage.py db init
+* python manage.py db migrate -m <migration example>
+* python manage.py db upgrade

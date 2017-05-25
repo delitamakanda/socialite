@@ -1,0 +1,13 @@
+Dear {{ user.username }},
+
+Welcome to socialite !
+
+To confirm your account please click on the following link:
+
+{{ url_for('auth.confirm', token=token, _external=True) }}
+
+Sincerly,
+
+The socialite team
+
+Note: replies to this email are not monitored.
