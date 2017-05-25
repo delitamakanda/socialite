@@ -1,5 +1,8 @@
-from flask.ext.mail import Message
+from flask.ext.mail import Mail, Message
+from flask import render_template
 from config import config
+
+mail = Mail()
 
 config['FLASKY_MAIL_SUBJECT_PREFIX'] = 'Socialite'
 config['FLASKY_MAIL_SENDER'] = 'Socialite Team <delita.makanda@gmail.com>'

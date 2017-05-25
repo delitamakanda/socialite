@@ -12,7 +12,13 @@
 <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
 
     <div class="mdl-cell mdl-cell--12-col">
-        <h5>Hello</h5>
+        <h4>Hello, {{ current_user.username }}!</h4>
+
+        <h5>You have not confirmed your account yet.</h5>
+
+        <p>Before you can access this site you need to confirm your account. Check your inbox, you should have received an email with a confirmation link.</p>
+
+        <p>Need another confirmation email ? <a href="{{ url_for('auth.resend_confirmation') }}">Cick here</a></p>
 
 
     </div>
