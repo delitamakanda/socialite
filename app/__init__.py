@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template
 from flask.ext.mail import Mail
 from flask.ext.moment import Moment
