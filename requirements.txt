@@ -13,3 +13,4 @@ WTForms==1.0.5
 Werkzeug==0.9.4
 blinker==1.3
 itsdangerous==0.23
+Flask-Login-0.4.0
