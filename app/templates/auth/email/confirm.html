@@ -1,44 +1,13 @@
-{% extends "base2.html" %}
-{% block title %}Confirm your account{% endblock %}
-{% block head %}
-{{ super() }}
-    <style>
-    </style>
-{% endblock %}
+Dear {{ user.username }},
 
+Welcome to socialite !
 
-{% block content %}
-{{ super() }}
-<div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+To confirm your account please click on the following link:
 
-    <div>
-        <h5>Dear {{ user.username }},</h5>
+{{ url_for('auth.confirm', token=token, _external=True) }}
 
+Sincerly,
 
+The socialite team
 
-        <p>Welcome to socialite !</p>
-
-        <p>To confirm your account please click on the following link:</p>
-
-        <p>{{ url_for('auth.confirm', token=token, _external=True) }}</p>
-
-        <p>Sincerly,</p>
-
-        <p>The socialite team</p>
-
-        <p>Note: replies to this email are not monitored.</p>
-
-
-
-    </div>
-
-
-</div>
-
-
-{% endblock %}
-
-
-{% block scripts %}
-{{ super() }}
-{% endblock %}
+Note: replies to this email are not monitored.
