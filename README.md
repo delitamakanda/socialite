@@ -6,6 +6,7 @@ work in progress
 ## front-end
 [materialize framework by Google guidelines](https://getmdl.io/index.html)
 [components](https://getmdl.io/components/index.html#textfields-section)
+[book](https://github.com/miguelgrinberg/flasky)
 
 
 ## commands
