@@ -1,6 +1,10 @@
 <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
     <header class="demo-drawer-header">
-      <img src="{{ user.gravatar(size=256) }}" class="demo-avatar">
+    {% if current_user.is_authenticated()  %}
+      <img src="{{ current_user.gravatar(size=256) }}" class="demo-avatar">
+    {% else %}
+        <img src="{{ url_for('static', filename='images/user.jpg') }}" class="demo-avatar">
+    {% endif %}
       <div class="demo-avatar-dropdown">
         {% if current_user.is_authenticated() %}
             <span>{{ current_user.email }}</span>

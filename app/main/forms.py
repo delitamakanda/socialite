@@ -3,8 +3,8 @@ from wtforms import StringField, SubmitField, TextAreaField, BooleanField, Selec
 from wtforms.validators import Required, Length, Regexp, EqualTo, Email
 from ..models import User, Role
 
-class NameForm(Form):
-    name = StringField('What your name ?', validators=[Required()])
+class PostForm(Form):
+    body = TextAreaField("What's on your mind", validators=[Required()])
     submit = SubmitField('Submit')
 
 
