@@ -12,3 +12,8 @@ work in progress
 * python manage.py db init
 * python manage.py db migrate -m <migration example>
 * python manage.py db upgrade
+
+## generate fake data with forgerypy
+* python manage.py shell
+* User.generate_fake(100)
+* Post.generate_fake(100)

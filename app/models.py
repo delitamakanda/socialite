@@ -120,10 +120,44 @@ class User(UserMixin, db.Model):
         return '{url}/{hash}?s={size}&d={default}&r={rating}'.format(url=url, hash=hash, size=size, default=default, rating=rating)
 
     def change_email(self, token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return False
+        if data.get('change_email') != self.id :
+            return False
+        new_email = data.get('new_email')
+        if new_email is None:
+            return False
+        if self.query.filter_by(email=new_email).first() is not None:
+            return False
         self.email = new_email
         self.avatar_hash = hashlib.md5(self.email.encode('utf-8')).hexdigest()
         db.session.add(self)
         return True
+
+    @staticmethod
+    def generate_fake(count=100):
+        from sqlalchemy.exc import IntegrityError
+        from random import seed
+        import forgery_py
+
+        seed()
+        for i in range(count):
+            u = User(email=forgery_py.internet.email_address(),
+                    username=forgery_py.internet.user_name(True),
+                    password=forgery_py.lorem_ipsum.word(),
+                    confirmed=True,
+                    name=forgery_py.name.full_name(),
+                    location=forgery_py.address.city(),
+                    about_me=forgery_py.lorem_ipsum.sentence(),
+                    member_since=forgery_py.date.date(True))
+            db.session.add(u)
+            try:
+                db.session.commit()
+            except IntegrityError:
+                db.session.rollback()
 
 
     def __repr__(self):
@@ -135,6 +169,23 @@ class Post(db.Model):
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    @staticmethod
+    def generate_fake(count=100):
+        from random import seed, randint
+        import forgery_py
+
+        seed()
+        user_count = User.query.count()
+        for i in range(count):
+            u = User.query.offset(randint(0, user_count - 1)).first()
+            p = Post(body=forgery_py.lorem_ipsum.sentences(randint(1, 3)),
+                    timestamp=forgery_py.date.date(True),
+                    author=u)
+            db.session.add(p)
+            db.session.commit()
+
+        
 
 class AnonymousUser(AnonymousUserMixin):
     def can(self, permissions):
