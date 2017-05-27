@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ user }} 's profile{% endblock %}
+{% block title %}{{ user.username }} 's profile{% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -17,7 +17,39 @@
 
 {% block content %}
 {{ super() }}
- Hello {{ user }}
+<div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+ <h4> {{ user.username }}</h4>
+
+ {% if user == current_user %}
+    <a href="{{ url_for('.edit_profile') }}">Edit profile</a>
+ {% endif %}
+
+ {% if user.name or user.location %}
+ <p>
+     {% if user.name %}{{ user.name }}{% endif %}
+     {% if user.location %}
+        From <a href="http://maps.google.com/?q={{ user.location }}" target="_blank"> {{user.location }} </a>
+     {% endif %}
+
+ </p>
+ {% endif %}
+
+ {% if current_user.is_administrator() %}
+ <p>
+     <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
+     <a href="{{ url_for('.edit_profile_admin', id=user.id) }}">Edit profile [Admin]</a>
+
+ </p>
+
+ {% endif %}
+ {% if user.about_me %}<p> {{ user.about_me }}</p> {% endif %}
+ <div>
+ <p>
+     Member since {{ moment(user.member_since).format('L') }}.<br>
+     Last seen {{ moment(user.last_seen).fromNow() }}.
+ </p>
+ </div>
+</div>
 {% endblock %}
 
 
