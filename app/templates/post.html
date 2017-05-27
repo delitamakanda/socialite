@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Post{% endblock %}
+{% block head %}
+{{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block dashboard %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+
+<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+    {% include 'partials/_posts.html' %}
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

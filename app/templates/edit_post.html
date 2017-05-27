@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Edit post{% endblock %}
+
+{% block head %}
+{{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block dashboard %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+ <h4> Edit post </h4>
+
+ <form method="post" name="edit_profile">
+     {{form.hidden_tag()}}
+     <div>
+         <label for="body">Post</label>
+         <div class="mdl-textfield mdl-js-textfield">
+           {{form.body(size=64)}}
+         </div>
+     </div>
+     {% for error in form.errors.body %}
+     <span style="color: gray;">{{error}}</span>
+     {% endfor %}
+
+
+     <div>
+         <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button>
+     </div>
+ </form>
+
+</div>
+{% endblock %}
+
+
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

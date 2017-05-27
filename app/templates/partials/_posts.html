@@ -11,7 +11,19 @@
           </div>
         <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
           <h5><a href="{{ url_for('.user', username=post.author.username) }}">{{ post.author.username }}</a> {{ moment(post.timestamp).fromNow() }}</h5>
-          {{ post.body }}
+          {% if post.body_html %}
+            {{ post.body_html | safe }}
+          {% else %}
+            {{ post.body }}
+          {% endif %}
+          <div class="permalik">
+              {% if current_user == post.author %}
+              <a href="{{ url_for('.edit', id=post.id) }}">Edit</a>
+              {% elif current_user.is_administrator() %}
+              <a href="{{ url_for('.edit', id=post.id) }}">Edit as Admin</a>
+              {% endif %}
+              <a href="{{ url_for('.post', id=post.id) }}">Permalink</a>
+          </div>
         </div>
         {% endfor %}
         </div>
