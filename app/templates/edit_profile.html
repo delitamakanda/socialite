@@ -51,6 +51,55 @@
      <span style="color: gray;">{{error}}</span>
      {% endfor %}
 
+     {% if current_user.is_administrator() %}
+
+
+         <div>
+             <label for="email">Email</label>
+             <div class="mdl-textfield mdl-js-textfield">
+               {{form.email(size=64)}}
+             </div>
+         </div>
+         {% for error in form.errors.email %}
+         <span style="color: gray;">{{error}}</span>
+         {% endfor %}
+
+         <div>
+             <label for="username">Username</label>
+             <div class="mdl-textfield mdl-js-textfield">
+               {{form.username(size=64)}}
+             </div>
+         </div>
+         {% for error in form.errors.username %}
+         <span style="color: gray;">{{error}}</span>
+         {% endfor %}
+
+         <div>
+             <label for="confirmed">confirmed</label>
+             <div class="mdl-textfield mdl-js-textfield">
+               {{form.confirmed(size=64)}}
+             </div>
+         </div>
+         {% for error in form.errors.confirmed %}
+         <span style="color: gray;">{{error}}</span>
+         {% endfor %}
+
+
+         <div>
+             <label for="role">Role</label>
+             <div class="mdl-textfield mdl-js-textfield">
+               {{form.role(size=64)}}
+             </div>
+         </div>
+         {% for error in form.errors.role %}
+         <span style="color: gray;">{{error}}</span>
+         {% endfor %}
+
+
+
+
+     {% endif %}
+
      <div>
          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button>
      </div>

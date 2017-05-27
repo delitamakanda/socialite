@@ -6,7 +6,7 @@ class Config:
 	SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 	FLASKY_MAIL_SUBJECT_PREFIX = 'Socialite'
 	FLASKY_MAIL_SENDER = 'Socialite Team <team.socialite.app@gmail.com>'
-	FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
+	FLASKY_ADMIN = 'delita.makanda@gmail.com'
 
 	@staticmethod
 	def init_app(app):
