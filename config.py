@@ -4,9 +4,9 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
 	SECRET_KEY = 'dummy_secret_key'
 	SQLALCHEMY_COMMIT_ON_TEARDOWN = True
-	FLASKY_MAIL_SUBJECT_PREFIX = 'Socialite'
-	FLASKY_MAIL_SENDER = 'Socialite Team <team.socialite.app@gmail.com>'
-	FLASKY_ADMIN = 'delita.makanda@gmail.com',
+	MAIL_SUBJECT_PREFIX = 'Socialite'
+	MAIL_SENDER = 'Socialite Team <team.socialite.app@gmail.com>'
+	ADMIN = 'delita.makanda@gmail.com',
 	POSTS_PER_PAGE = 10
 	FOLLOWERS_PER_PAGE = 20
 
