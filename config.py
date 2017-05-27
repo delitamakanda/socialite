@@ -9,6 +9,7 @@ class Config:
 	ADMIN = 'delita.makanda@gmail.com',
 	POSTS_PER_PAGE = 10
 	FOLLOWERS_PER_PAGE = 20
+	COMMENTS_PER_PAGE = 10
 
 	@staticmethod
 	def init_app(app):

@@ -1,7 +1,8 @@
-<section>
+<section id="comments">
+    <h3>Comments</h3>
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-        {% for post in posts %}
+        {% for post in comments %}
           <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
               <div class="section__circle-container__circle">
                   <a href="{{ url_for('.user', username=post.author.username) }}">
@@ -16,25 +17,10 @@
           {% else %}
             {{ post.body }}
           {% endif %}
-          <div class="permalink">
-              {% if current_user == post.author %}
-              <a href="{{ url_for('.edit', id=post.id) }}">Edit</a>
-              {% elif current_user.is_administrator() %}
-              <a href="{{ url_for('.edit', id=post.id) }}">Edit as Admin</a>
-              {% endif %}
-              <a href="{{ url_for('.post', id=post.id) }}">Permalink</a>
-              <a href="{{ url_for('.post', id=post.id) }}#comments">{{ post.comments.count() }} comment(s)</a>
-          </div>
         </div>
         {% endfor %}
         </div>
         <div class="mdl-card__actions">
         </div>
     </div>
-</section>
-
-<section class="mdl-color--white mdl-cell mdl-cell--12-col mdl-grid">
-    <div>
-      {% include 'partials/_comments.html' %}
-  </div>
 </section>

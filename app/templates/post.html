@@ -21,6 +21,30 @@
     {% include 'partials/_posts.html' %}
 </section>
 
+<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+    {% if current_user.can(Permission.COMMENT) %}
+    <form method="post" name="write_articles">
+        {{form.hidden_tag()}}
+        <div>
+            <label for="body">Add a comment</label>
+            <div class="mdl-textfield mdl-js-textfield">
+              {{form.body(size=64)}}
+            </div>
+        </div>
+        {% for error in form.errors.body %}
+        <span style="color: gray;">{{error}}</span>
+        {% endfor %}
+
+        <div>
+          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Comment</button>
+        </div>
+
+    </form>
+    {% else %}
+    <div>Please sign in discuss with our team.</div>
+    {% endif %}
+</section>
+
 {% endblock %}
 
 
