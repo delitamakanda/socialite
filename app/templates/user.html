@@ -20,8 +20,12 @@
 <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
  <h4> {{ user.username }}</h4>
 
- {% if user == current_user %}
+ {% if user == current_user and not current_user.is_administrator()  %}
     <a href="{{ url_for('.edit_profile') }}">Edit profile</a>
+ {% endif %}
+
+ {% if current_user.is_administrator() and user == current_user %}
+     <a href="{{ url_for('.edit_profile_admin', id=user.id) }}">Edit profile [Admin]</a>
  {% endif %}
 
  {% if user.name or user.location %}
@@ -34,14 +38,8 @@
  </p>
  {% endif %}
 
- {% if current_user.is_administrator() %}
- <p>
-     <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
-     <a href="{{ url_for('.edit_profile_admin', id=user.id) }}">Edit profile [Admin]</a>
 
- </p>
 
- {% endif %}
  {% if user.about_me %}<p> {{ user.about_me }}</p> {% endif %}
  <div>
  <p>
@@ -49,6 +47,12 @@
      Last seen {{ moment(user.last_seen).fromNow() }}.
  </p>
  </div>
+ {% if current_user.is_administrator() %}
+ <p>
+     <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
+ </p>
+
+ {% endif %}
 </div>
 {% endblock %}
 
