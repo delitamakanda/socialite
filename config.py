@@ -8,6 +8,7 @@ class Config:
 	FLASKY_MAIL_SENDER = 'Socialite Team <team.socialite.app@gmail.com>'
 	FLASKY_ADMIN = 'delita.makanda@gmail.com',
 	POSTS_PER_PAGE = 10
+	FOLLOWERS_PER_PAGE = 20
 
 	@staticmethod
 	def init_app(app):

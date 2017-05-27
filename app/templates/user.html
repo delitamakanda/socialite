@@ -59,6 +59,24 @@
  </p>
 
  {% endif %}
+
+
+
+{% if current_user.can(Permission.FOLLOW) and user != current_user %}
+    {% if not current_user.is_following(user) %}
+    <a href="{{ url_for('.follow', username=user.username) }}">Follow</a>
+    {% else %}
+    <a href="{{ url_for('.unfollow', username=user.username) }}">Unfollow</a>
+    {% endif %}
+{% endif %}
+
+<a href="{{ url_for('.followers', username=user.username) }}">Followers: {{ user.followers.count() }}</a>
+
+<a href="{{ url_for('.followed_by', username=user.username) }}">Followed by: {{ user.followed.count() }}</a>
+
+{% if current_user.is_authenticated() and user != current_user and user.is_following(current_user) %}
+    <span>Follows you</span>
+{% endif %}
 </div>
 
 <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">

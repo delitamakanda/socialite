@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% import "partials/_macros.html" as macros %}
+{% block title %} {{ title }} {{ user.username }} {% endblock %}
+
+{% block head %}
+{{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block dashboard %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+
+<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+    <h2>{{ title }} {{ user.username }}</h2>
+
+    <table class="table table-hover followers">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Since</th>
+            </tr>
+        </thead>
+        {% for follow in follows %}
+        {% if follow.user != user %}
+        <tr>
+            <td>
+                <a href="{{ url_for('.user', username = follow.user.username) }}">
+                    <img class="img-rounded" src="{{ follow.user.gravatar(size=32) }}">
+                    {{ follow.user.username }}
+                </a>
+            </td>
+            <td>{{ moment(follow.timestamp).format('L') }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+    <div class="pagination">
+        {{ macros.pagination_widget(pagination, endpoint, username = user.username) }}
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
