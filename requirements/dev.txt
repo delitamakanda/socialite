@@ -21,3 +21,4 @@ html5lib==0.999999999
 markdown==2.6.8
 webencodings==0.5.1
 flask-httpauth==3.2.2
+httpie==0.9.9
