@@ -1,5 +1,4 @@
 <section id="comments">
-    <h3>Comments</h3>
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
         {% for post in comments %}
@@ -12,11 +11,30 @@
           </div>
         <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
           <h5><a href="{{ url_for('.user', username=post.author.username) }}">{{ post.author.username }}</a> {{ moment(post.timestamp).fromNow() }}</h5>
-          {% if post.body_html %}
-            {{ post.body_html | safe }}
-          {% else %}
-            {{ post.body }}
+
+          {% if post.disabled %}
+          <p><em>This comment has been disabled.</em></p>
           {% endif %}
+
+          {% if moderate or not post.disabled %}
+
+              {% if post.body_html %}
+                {{ post.body_html | safe }}
+              {% else %}
+                {{ post.body }}
+              {% endif %}
+
+          {% endif %}
+
+          <div class="moderate">
+              {% if moderate %}
+                {% if post.disabled %}
+                    <a href="{{ url_for('.moderate_enable', id=post.id, page=page) }}">Enable</a>
+                {% else %}
+                    <a href="{{ url_for('.moderate_disable', id=post.id, page=page) }}">Disable</a>
+                {% endif %}
+              {% endif %}
+          </div>
         </div>
         {% endfor %}
         </div>

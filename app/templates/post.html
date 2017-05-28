@@ -22,6 +22,7 @@
 </section>
 
 <section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+    <h3>Comments</h3>
     {% if current_user.can(Permission.COMMENT) %}
     <form method="post" name="write_articles">
         {{form.hidden_tag()}}
