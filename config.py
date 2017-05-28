@@ -10,6 +10,9 @@ class Config:
 	POSTS_PER_PAGE = 10
 	FOLLOWERS_PER_PAGE = 20
 	COMMENTS_PER_PAGE = 10
+	SLOW_DB_QUERY_TIME = 0.5
+	SQLALCHEMY_RECORD_QUERIES = True
+
 
 	@staticmethod
 	def init_app(app):

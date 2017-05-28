@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask import render_template, session, redirect, url_for, request, abort, flash, make_response
+from flask.ext.sqlalchemy import get_debug_queries
 from flask.ext.login import login_user, logout_user, login_required, current_user
 from . import main
 from .forms import PostForm, EditProfileForm, EditProfileAdminForm, CommentForm
@@ -7,6 +8,15 @@ from .. import db
 from ..models import User, Role, Permission, Post, Follow, Comment
 from flask import current_app
 from ..decorators import admin_required, permission_required
+
+
+@main.after_app_request
+def after_app_request(response):
+    for query in get_debug_queries():
+        if query.duration >= current_app.config['SLOW_DB_QUERY_TIME']:
+            current_app.logger.warning(
+                'Slow query: %s\nParameters: %s\nDuration: %fs\nContext: %s\n' % (query.statement, query.parameters, query.duration, query.context))
+    return response
 
 
 @main.route('/shutdown')
