@@ -22,7 +22,7 @@ manager.add_command('db', MigrateCommand)
 @manager.command
 def deploy():
     from flask.ext.migrate import upgrade
-    from app.models import User, Role
+    from app.models import User, Role, Post, Comment, Follow, Permission
     upgrade()
     Role.insert_roles()
     User.add_self_follows()
