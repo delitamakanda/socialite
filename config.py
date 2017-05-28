@@ -58,7 +58,7 @@ class ProductionConfig(Config):
 			mailhost=(cls.MAIL_SERVER, cls.MAIL_PORT),
 			fromaddr=cls.MAIL_SENDER,
 			toaddrs=[cls.ADMIN],
-			subject=cs.MAIL_SUBJECT_PREFIX + ' Application error',
+			subject=cls.MAIL_SUBJECT_PREFIX + ' Application error',
 			credentials=credentials,
 			secure=secure)
 		mail_handler.setLevel(logging.ERROR)
