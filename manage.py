@@ -22,16 +22,20 @@ manager.add_command('db', MigrateCommand)
 @manager.command
 def deploy():
     from flask.ext.migrate import upgrade
-    from app.models import User, Role, Post, Comment, Follow, Permission
+    from app.models import User, Role
     upgrade()
     Role.insert_roles()
     User.add_self_follows()
 
+
+@manager.command
 def profile(length=25, profile_dir=None):
     from werkzeug.contrib.profiler import ProfilerMiddleware
     app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[length], profile_dir=profile_dir)
     app.run()
 
+
+@manager.command
 def test(coverage=False):
     if coverage and not os.environ.get('COVERAGE'):
         import sys
