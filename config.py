@@ -13,6 +13,11 @@ class Config:
 	SLOW_DB_QUERY_TIME = 0.5
 	SQLALCHEMY_RECORD_QUERIES = True
 	SSL_DISABLE = True
+	MAIL_SERVER = 'smtp.googlemail.com'
+	MAIL_PORT = 587
+	MAIL_USE_TLS = True
+	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 
 	@staticmethod
@@ -22,7 +27,6 @@ class Config:
 class DevelopmentConfig(Config):
 	"""docstring for DevelopmentConfig."""
 	DEBUG = True
-
 	MAIL_SERVER = 'smtp.googlemail.com'
 	MAIL_PORT = 587
 	MAIL_USE_TLS = True
