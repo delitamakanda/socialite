@@ -77,6 +77,10 @@
 {% if current_user.is_authenticated() and user != current_user and user.is_following(current_user) %}
     <span>Follows you</span>
 {% endif %}
+
+<div class="edit-infos">
+<a href="{{ url_for('auth.change_password') }}">Change Password</a> | <a href="{{ url_for('auth.change_email_request') }}">Change Email</a> | <a href="{{ url_for('auth.logout') }}">Log Out</a>
+</div>
 </div>
 
 <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
