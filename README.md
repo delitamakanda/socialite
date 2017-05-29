@@ -6,7 +6,7 @@ work in progress
 ## front-end
 [materialize framework by Google guidelines](https://getmdl.io/index.html)
 [components](https://getmdl.io/components/index.html#textfields-section)
-[book](https://github.com/miguelgrinberg/flasky)
+[book](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world/page/5)
 
 
 ## commands
