@@ -3,7 +3,7 @@ from flask.ext.login import login_user, logout_user, login_required, current_use
 from . import auth
 from ..models import User, Role, Permission
 from ..decorators import admin_required, permission_required
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, ChangePasswordForm, PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
 from ..email import send_email
 from flask import current_app
 from .. import db
