@@ -171,6 +171,32 @@ class User(UserMixin, db.Model):
             url = 'http://www.gravatar.com/avatar'
         hash = hashlib.md5(self.email.encode('utf-8')).hexdigest()
         return '{url}/{hash}?s={size}&d={default}&r={rating}'.format(url=url, hash=hash, size=size, default=default, rating=rating)
+        
+        
+    def generate_reset_token(self, expiration=3600):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return s.dumps({'reset': self.id})
+        
+
+
+    def reset_password(self, token, new_password):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return False
+        if data.get('reset') != self.id:
+            return False
+        self.password = new_password
+        db.session.add(self)
+        return True
+        
+        
+    def generate_email_change_token(self, new_email, expiration=3600):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        return s.dumps({'change_email': self.id, 'new_email': new_email})
+        
+        
 
     def change_email(self, token):
         s = Serializer(current_app.config['SECRET_KEY'])
@@ -235,7 +261,7 @@ class User(UserMixin, db.Model):
 
     def generate_auth_token(self, expiration):
         s = Serializer(current_app.config['SECRET_KEY'], expires_in=expiration)
-        return s.dumps({'id': self.id})
+        return s.dumps({'id': self.id}).decode('ascii')
 
     @staticmethod
     def verify_auth_token(token):
@@ -258,6 +284,8 @@ class User(UserMixin, db.Model):
             'post_count': self.posts.count()
         }
         return json_user
+        
+    
 
 
     def __repr__(self):
