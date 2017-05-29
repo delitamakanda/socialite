@@ -1,13 +1,13 @@
-Dear {{ user.username }},
+<p>Dear {{ user.username }},</p>
 
-Welcome to socialite !
+<p>Welcome to socialite !</p>
 
-To confirm your account please click on the following link:
+<p>To confirm your account please click on the following link:</p>
 
 {{ url_for('auth.confirm', token=token, _external=True) }}
 
-Sincerly,
+<p>Sincerly,</p>
 
-The socialite team
+<p>The socialite team</p>
 
-Note: replies to this email are not monitored.
+<p>Note: replies to this email are not monitored.</p>
