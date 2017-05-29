@@ -65,7 +65,7 @@ class ProductionConfig(Config):
 		app.logger.addHandler(mail_handler)
 
 
-class HerokuConfig(Config):
+class HerokuConfig(ProductionConfig):
 	SSL_DISABLE = bool(os.environ.get('SSL_DISABLE'))
 
 	@classmethod
