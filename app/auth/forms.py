@@ -26,7 +26,7 @@ class RegistrationForm(Form):
             raise ValidationError('Username already in use.')
             
             
-class ChangePasswordForm(FlaskForm):
+class ChangePasswordForm(Form):
     old_password = PasswordField('Old password', validators=[Required()])
     password = PasswordField('New password', validators=[
         Required(), EqualTo('password2', message='Passwords must match')])
@@ -34,13 +34,13 @@ class ChangePasswordForm(FlaskForm):
     submit = SubmitField('Update Password')
 
 
-class PasswordResetRequestForm(FlaskForm):
+class PasswordResetRequestForm(Form):
     email = StringField('Email', validators=[Required(), Length(1, 64),
                                              Email()])
     submit = SubmitField('Reset Password')
 
 
-class PasswordResetForm(FlaskForm):
+class PasswordResetForm(Form):
     email = StringField('Email', validators=[Required(), Length(1, 64),
                                              Email()])
     password = PasswordField('New Password', validators=[
@@ -53,7 +53,7 @@ class PasswordResetForm(FlaskForm):
             raise ValidationError('Unknown email address.')
 
 
-class ChangeEmailForm(FlaskForm):
+class ChangeEmailForm(Form):
     email = StringField('New Email', validators=[Required(), Length(1, 64),
                                                  Email()])
     password = PasswordField('Password', validators=[Required()])
