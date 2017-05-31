@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}403{% endblock %}
+
+{% block head %}
+{{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block dashboard %}
+{% include 'partials/dashboard.html' %}
+{% endblock %}
+
+{% block content %}
+
+ <h1>Forbidden content</h1>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
