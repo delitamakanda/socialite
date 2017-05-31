@@ -247,5 +247,6 @@ def moderate_disable(id):
     
     
 @main.route('/contact/', methods=['GET', 'POST'])
-def contact-us():
+def contact_us():
+    toto = ''
     return render_template('contact.html')
