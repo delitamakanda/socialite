@@ -244,3 +244,8 @@ def moderate_disable(id):
 #@permission_required(Permission.MODERATE_COMMENTS)
 #def for_moderators_only():
     #return "for moderators !"
+    
+    
+@main.route('/contact/', methods=['GET', 'POST'])
+def contact-us():
+    return render_template('contact.html')
