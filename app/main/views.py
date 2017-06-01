@@ -213,6 +213,13 @@ def moderate():
     pagination = Comment.query.order_by(Comment.timestamp.desc()).paginate(page, per_page=current_app.config['COMMENTS_PER_PAGE'], error_out=False)
     comments = pagination.items
     return render_template('moderate.html', pagination=pagination, comments=comments, page=page)
+    
+    
+@main.route('/contact/', methods=['GET', 'POST'])
+def contact_us():
+    toto = ''
+    return render_template('contact.html')
+
 
 
 @main.route('/moderate/enable/<int:id>')
@@ -245,8 +252,3 @@ def moderate_disable(id):
 #def for_moderators_only():
     #return "for moderators !"
     
-    
-@main.route('/contact/', methods=['GET', 'POST'])
-def contact_us():
-    toto = ''
-    return render_template('contact.html')
