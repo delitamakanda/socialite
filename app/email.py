@@ -21,8 +21,4 @@ def send_email(to, subject, template, **kwargs):
     
     
 def follower_notification(followed, follower):
-    send_email("Socialite %s is now following you!" %s follower.nickname, 
-                current_app.config['ADMIN'], 
-                [followed.email], 
-                render_template("mail/follower_email.txt"),
-                render_template("mail/follower_email.html"))
+    send_email("Socialite %s is now following you!" %s follower.nickname, current_app.config['ADMIN'], [followed.email], render_template("mail/follower_email.txt"), render_template("mail/follower_email.html"))
