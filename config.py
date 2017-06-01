@@ -5,7 +5,7 @@ class Config:
 	SECRET_KEY = 'dummy_secret_key'
 	MAIL_SUBJECT_PREFIX = 'Socialite'
 	MAIL_SENDER = 'Socialite Team <team.socialite.app@gmail.com>'
-	ADMIN = 'delita.makanda@gmail.com',
+	ADMIN = ['delita.makanda@gmail.com']
 	POSTS_PER_PAGE = 10
 	FOLLOWERS_PER_PAGE = 20
 	COMMENTS_PER_PAGE = 10
@@ -19,6 +19,8 @@ class Config:
 	MAIL_USE_TLS = True
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+	
+	ADMINS = ['delita.makanda@gmail.com', 'makanda.delita@orange.fr']
 
 
 	@staticmethod
