@@ -63,6 +63,7 @@ def confirm(token):
     if current_user.confirmed:
         return redirect(url_for('main.index'))
     if current_user.confirm(token):
+        send_email(current_app.config['ADMIN'], ' An user join us', 'mail/new_user', user=current_user)
         flash('You have confirmed your account. Thanks !')
     else:
         flash('The confirmation link is invalid or has expired.')
