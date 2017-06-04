@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }}{% endblock %}
+{% block head %}
+{{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block dashboard %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<section class="mdl-color--white mdl-shadow--2dp section--center  mdl-cell mdl-cell--12-col mdl-grid ">
+    <h1>{{ page.title }}</h1>
+
+    <p>{{ page.html|safe }}</p>
+</section>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}

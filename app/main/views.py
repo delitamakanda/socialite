@@ -8,7 +8,7 @@ from .. import db
 from ..models import User, Role, Permission, Post, Follow, Comment
 from flask import current_app
 from ..decorators import admin_required, permission_required
-
+from app import pages
 
 @main.after_app_request
 def after_app_request(response):
@@ -213,8 +213,8 @@ def moderate():
     pagination = Comment.query.order_by(Comment.timestamp.desc()).paginate(page, per_page=current_app.config['COMMENTS_PER_PAGE'], error_out=False)
     comments = pagination.items
     return render_template('moderate.html', pagination=pagination, comments=comments, page=page)
-    
-    
+
+
 @main.route('/contact/', methods=['GET', 'POST'])
 def contact_us():
     toto = ''
@@ -240,6 +240,14 @@ def moderate_disable(id):
     db.session.add(comment)
     return redirect(url_for('.moderate', page=request.args.get('page', 1, type=int)))
 
+
+@main.route('/<path:path>/')
+def page(path):
+    page = pages.get_or_404(path)
+    return render_template('page.html', page=page)
+    #return pages.get_or_404(path).html
+
+
 #@main.route('/admin')
 #@login_required
 #@admin_required
@@ -251,4 +259,3 @@ def moderate_disable(id):
 #@permission_required(Permission.MODERATE_COMMENTS)
 #def for_moderators_only():
     #return "for moderators !"
-    

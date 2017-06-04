@@ -19,7 +19,8 @@ class Config:
 	MAIL_USE_TLS = True
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-	
+	FLATPAGES_EXTENSION = '.md'
+
 	ADMINS = ['delita.makanda@gmail.com', 'makanda.delita@orange.fr']
 
 
@@ -30,6 +31,7 @@ class Config:
 class DevelopmentConfig(Config):
 	"""docstring for DevelopmentConfig."""
 	DEBUG = True
+	FLATPAGES_AUTO_RELOAD = DEBUG
 	MAIL_SERVER = 'smtp.googlemail.com'
 	MAIL_PORT = 587
 	MAIL_USE_TLS = True
