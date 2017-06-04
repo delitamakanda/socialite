@@ -24,3 +24,4 @@ flask-sslify==0.1.4
 httpie==0.9.9
 flask-httpauth==3.2.2
 SQLAlchemy==1.1.5
+Flask-FlatPages==0.6

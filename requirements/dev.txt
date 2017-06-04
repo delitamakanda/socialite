@@ -24,3 +24,4 @@ flask-httpauth==3.2.2
 httpie==0.9.9
 coverage==4.4.1
 selenium==3.4.2
+Flask-FlatPages==0.6
