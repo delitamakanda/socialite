@@ -19,6 +19,57 @@
 
 <section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
     <h3>Contact form</h3>
+    
+     <form method="post" name="contact_us" action="{{ url_for('contact_us') }}">
+     {{form.hidden_tag()}}
+     <div>
+         <label for="name">Name</label>
+         <div class="mdl-textfield mdl-js-textfield">
+           {{form.name}}
+         </div>
+     </div>
+     {% for error in form.errors.name %}
+     <span style="color: gray;">{{error}}</span>
+     {% endfor %}
+     
+     
+     <div>
+         <label for="name">Email</label>
+         <div class="mdl-textfield mdl-js-textfield">
+           {{form.email}}
+         </div>
+     </div>
+     {% for error in form.errors.email %}
+     <span style="color: gray;">{{error}}</span>
+     {% endfor %}
+     
+     
+     <div>
+         <label for="name">Subject</label>
+         <div class="mdl-textfield mdl-js-textfield">
+           {{form.subject}}
+         </div>
+     </div>
+     {% for error in form.errors.subject %}
+     <span style="color: gray;">{{error}}</span>
+     {% endfor %}
+     
+     
+     <div>
+         <label for="name">Message</label>
+         <div class="mdl-textfield mdl-js-textfield">
+           {{form.message}}
+         </div>
+     </div>
+     {% for error in form.errors.message %}
+     <span style="color: gray;">{{error}}</span>
+     {% endfor %}
+
+
+     <div>
+         <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Send</button>
+     </div>
+</form>
 
     
 </section>
