@@ -10,6 +10,7 @@ from .. import db
 from ..models import User, Role, Permission, Post, Follow, Comment
 from flask import current_app
 from ..decorators import admin_required, permission_required
+from flask import current_app
 from app import pages
 
 @main.after_app_request
