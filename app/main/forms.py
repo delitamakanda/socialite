@@ -1,6 +1,6 @@
 from flask.ext.wtf import Form
 from flask.ext.pagedown.fields import PageDownField
-from wtforms import StringField, SubmitField, TextAreaField, BooleanField, SelectField, ValidationError
+from wtforms import TextField, StringField, SubmitField, TextAreaField, BooleanField, SelectField, ValidationError
 from wtforms.validators import Required, Length, Regexp, EqualTo, Email
 from ..models import User, Role, Comment
 
@@ -45,3 +45,12 @@ class EditProfileAdminForm(Form):
     def validate_username(self, field):
         if field.data != self.user.username and User.query.filter_by(username=field.data).first():
             raise ValidationError('Username already in use.')
+            
+
+            
+class ContactForm(Form):
+    name = StringField('Username', validators=[Required(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0, 'Usernames must have only letters, numbers, dots or underscore.')])
+    email = StringField('Email', validators=[Required(), Length(1, 64), Email()])
+    subject = TextField("Subject")
+    message = TextAreaField("Message")
+    submit = SubmitField("Send")
