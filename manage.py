@@ -56,5 +56,14 @@ def test(coverage=False):
         print('HTML version: file://%s/index.html' % covdir)
         COV.erase()
 
+
+if os.path.exists('.env'):
+    print('import env variables')
+    for line in open('.env'):
+        var = line.strip().split('=')
+        if len(var) == 2
+            os.environ[var[0]] = var[1]
+            
+
 if __name__ == '__main__':
     manager.run()
