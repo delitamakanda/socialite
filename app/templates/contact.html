@@ -20,6 +20,10 @@
 <section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
     <h3>Contact form</h3>
     
+    {% if success %}
+        <div>Thank you for your message. We'll get back at you shortly.</div>
+    {% endif %}
+    
      <form method="post" name="contact_us" action="{{ url_for('main.contact_us') }}">
      {{form.hidden_tag()}}
      <div>
