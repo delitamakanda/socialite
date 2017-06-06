@@ -220,7 +220,12 @@ def contact_us():
     form = ContactForm()
     
     if request.method == 'POST':
-        return 'posted'
+        if form.validate() == False:
+            flash("All fields are required.")
+            return render_template('contact.html', form=form)
+        else:
+            return 'posted'
+            
     elif request.method == 'GET':
         return render_template('contact.html', form=form)
 
