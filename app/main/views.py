@@ -3,7 +3,7 @@ from flask import render_template, session, redirect, url_for, request, abort, f
 from flask.ext.sqlalchemy import get_debug_queries
 from flask.ext.login import login_user, logout_user, login_required, current_user
 from . import main
-from .forms import PostForm, EditProfileForm, EditProfileAdminForm, CommentForm
+from .forms import PostForm, EditProfileForm, EditProfileAdminForm, CommentForm, ContactForm
 from .. import db
 from ..models import User, Role, Permission, Post, Follow, Comment
 from flask import current_app
@@ -217,8 +217,12 @@ def moderate():
 
 @main.route('/contact/', methods=['GET', 'POST'])
 def contact_us():
-    toto = ''
-    return render_template('contact.html')
+    form = ContactForm()
+    
+    if request.method == 'POST':
+        return 'posted'
+    elif request.method == 'GET':
+        return render_template('contact.html', form=form)
 
 
 
