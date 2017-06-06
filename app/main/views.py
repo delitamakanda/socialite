@@ -2,7 +2,6 @@ from datetime import datetime
 from flask import render_template, session, redirect, url_for, request, abort, flash, make_response
 from flask.ext.sqlalchemy import get_debug_queries
 from flask.ext.mail import Message
-from . import mail
 #from ..email import send_email
 from flask.ext.login import login_user, logout_user, login_required, current_user
 from . import main
@@ -11,7 +10,7 @@ from .. import db
 from ..models import User, Role, Permission, Post, Follow, Comment
 from flask import current_app
 from ..decorators import admin_required, permission_required
-from app import pages
+from app import pages, mail
 
 @main.after_app_request
 def after_app_request(response):
