@@ -224,7 +224,12 @@ def contact_us():
             flash("All fields are required.")
             return render_template('contact.html', form=form)
         else:
-            return 'posted'
+            msg = Message(form.subject.data, sender=form.email.data,recipients=current_app.config['ADMIN'])
+            msg.body = """
+            From: %s &lt;%s&gt
+            """ % (form.name.data, form.email.data, form.message.data)
+            mail.send(msg)
+            return render_template('contact.html', success=True)
             
     elif request.method == 'GET':
         return render_template('contact.html', form=form)
