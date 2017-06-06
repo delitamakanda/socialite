@@ -10,7 +10,6 @@ from .. import db
 from ..models import User, Role, Permission, Post, Follow, Comment
 from flask import current_app
 from ..decorators import admin_required, permission_required
-from flask import current_app
 from app import pages
 
 @main.after_app_request
@@ -227,7 +226,7 @@ def contact_us():
             flash("All fields are required.")
             return render_template('contact.html', form=form)
         else:
-            msg = Message(form.subject.data, sender=form.email.data,recipients=curent_app.config['MAIL_SENDER'])
+            msg = Message(form.subject.data, sender=form.email.data,recipients=current_app.config['ADMIN'])
             msg.body = """
             From: %s &lt;%s&gt
             %s
