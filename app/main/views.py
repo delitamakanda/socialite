@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import render_template, session, redirect, url_for, request, abort, flash, make_response
 from flask.ext.sqlalchemy import get_debug_queries
-from flask.ext.mail import Message
+from flask.ext.mail import Message, Mail
 from flask.ext.login import login_user, logout_user, login_required, current_user
 from . import main
 from .forms import PostForm, EditProfileForm, EditProfileAdminForm, CommentForm, ContactForm
@@ -228,8 +228,10 @@ def contact_us():
             msg = Message(form.subject.data, sender=form.email.data,recipients=current_app.config['ADMIN'])
             msg.body = """
             From: %s &lt;%s&gt
+            %s
             """ % (form.name.data, form.email.data, form.message.data)
             mail.send(msg)
+            
             return render_template('contact.html', success=True)
             
     elif request.method == 'GET':
