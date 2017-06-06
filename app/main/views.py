@@ -1,8 +1,8 @@
 from datetime import datetime
 from flask import render_template, session, redirect, url_for, request, abort, flash, make_response
 from flask.ext.sqlalchemy import get_debug_queries
-#from flask.ext.mail import Message, mail
-from ..email import send_email
+from flask.ext.mail import Message, mail
+#from ..email import send_email
 from flask.ext.login import login_user, logout_user, login_required, current_user
 from . import main
 from .forms import PostForm, EditProfileForm, EditProfileAdminForm, CommentForm, ContactForm
@@ -226,7 +226,7 @@ def contact_us():
             flash("All fields are required.")
             return render_template('contact.html', form=form)
         else:
-            msg = Message(form.subject.data, sender=form.email.data,recipients=current_app.config['ADMIN'])
+            msg = Message(form.subject.data, sender=form.email.data,recipients=app.config['MAIL_SENDER'])
             msg.body = """
             From: %s &lt;%s&gt
             %s
