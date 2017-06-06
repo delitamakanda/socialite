@@ -226,7 +226,7 @@ def contact_us():
             flash("All fields are required.")
             return render_template('contact.html', form=form)
         else:
-            msg = Message(form.subject.data, sender=form.email.data,recipients=app.config['MAIL_SENDER'])
+            msg = Message(form.subject.data, sender=form.email.data,recipients=curent_app.config['MAIL_SENDER'])
             msg.body = """
             From: %s &lt;%s&gt
             %s
