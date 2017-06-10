@@ -18,77 +18,81 @@
 {% block content %}
 {{ super() }}
 
-<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
- <h4> {{ user.username }}</h4>
-
-  <div><img src="{{ user.gravatar(size=256) }}" /></div>
-
-
- {% if user == current_user and not current_user.is_administrator()  %}
-    <a href="{{ url_for('.edit_profile') }}">Edit profile</a>
- {% endif %}
-
- {% if current_user.is_administrator() and user == current_user %}
-     <a href="{{ url_for('.edit_profile_admin', id=user.id) }}">Edit profile [Admin]</a>
- {% endif %}
-
- {% if user.name or user.location %}
- <p>
-     {% if user.name %}{{ user.name }}{% endif %}
-     {% if user.location %}
-        From <a href="http://maps.google.com/?q={{ user.location }}" target="_blank"> {{user.location }} </a>
-     {% endif %}
-
- </p>
- {% endif %}
-
-
-
-
-
- {% if user.about_me %}<p> {{ user.about_me }}</p> {% endif %}
- <div>
- <p>
-     Member since {{ moment(user.member_since).format('L') }}.<br>
-     Last seen {{ moment(user.last_seen).fromNow() }}.
- </p>
- </div>
- {% if current_user.is_administrator() %}
- <p>
-     <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
- </p>
-
- {% endif %}
-
-
-
-{% if current_user.can(Permission.FOLLOW) and user != current_user %}
-    {% if not current_user.is_following(user) %}
-    <a href="{{ url_for('.follow', username=user.username) }}">Follow</a>
-    {% else %}
-    <a href="{{ url_for('.unfollow', username=user.username) }}">Unfollow</a>
-    {% endif %}
-{% endif %}
-
-<a href="{{ url_for('.followers', username=user.username) }}">Followers: {{ user.followers.count() }}</a>
-
-<a href="{{ url_for('.followed_by', username=user.username) }}">Followed by: {{ user.followed.count() }}</a>
-
-{% if current_user.is_authenticated() and user != current_user and user.is_following(current_user) %}
-    <span>Follows you</span>
-{% endif %}
-
 {% if current_user.is_authenticated() %}
     <a href="{{ url_for('auth.logout') }}">Log Out</a>
 {% endif %}
 
-<div class="edit-infos">
-<a href="{{ url_for('auth.change_password') }}">Change Password</a> | <a href="{{ url_for('auth.change_email_request') }}">Change Email</a>
+<div class="mdl-color--white mdl-shadow--2dp mdl-grid mdl-cell mdl-cell--12-col mdl-grid">
+    <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline"> {{ user.username }}</h3>
+
+    <div class="mdl-cell mdl-cell--3-col">
+        <div><img src="{{ user.gravatar(size=166) }}" /></div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--5-col">
+        {% if user.name or user.location %}
+        <p>
+            {% if user.name %}{{ user.name }}{% endif %}
+            {% if user.location %}
+                From <a href="http://maps.google.com/?q={{ user.location }}" target="_blank"> {{user.location }} </a>
+            {% endif %}
+        </p>
+        {% endif %}
+
+        {% if user.about_me %}<p> {{ user.about_me }}</p> {% endif %}
+        <div>
+            <p>Member since {{ moment(user.member_since).format('L') }}.<br>
+            Last seen {{ moment(user.last_seen).fromNow() }}.
+            </p>
+        </div>
+        {% if current_user.is_administrator() %}
+        <p><a href="mailto:{{user.email}}">{{ user.email }}</a><br></p>
+        {% endif %}
+    </div>
+
+    <div class="mdl-cell mdl-cell--4-col">
+         {% if user == current_user and not current_user.is_administrator()  %}
+         <a href="{{ url_for('.edit_profile') }}">Edit profile</a>
+         {% endif %}
+         
+         {% if current_user.is_administrator() and user == current_user %}
+         <a href="{{ url_for('.edit_profile_admin', id=user.id) }}">Edit profile [Admin]</a>
+         {% endif %}
+
+         <div class="edit-pwd">
+             <a href="{{ url_for('auth.change_password') }}">Change Password</a>
+        </div>
+
+        <div class="edit-mail">
+             <a href="{{ url_for('auth.change_email_request') }}">Change Email</a>
+        </div>
+
+    </div>
+
 </div>
+
+<div class="mdl-color--white mdl-shadow--2dp mdl-grid mdl-cell mdl-cell--12-col mdl-grid">
+
+    {% if current_user.can(Permission.FOLLOW) and user != current_user %}
+        {% if not current_user.is_following(user) %}
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ url_for('.follow', username=user.username) }}">Follow</a>
+        {% else %}
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" href="{{ url_for('.unfollow', username=user.username) }}">Unfollow</a>
+        {% endif %}
+    {% endif %}
+    &nbsp;
+    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="{{ url_for('.followers', username=user.username) }}">Followers: {{ user.followers.count() }}</a>
+    &nbsp;
+    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="{{ url_for('.followed_by', username=user.username) }}">Followed by: {{ user.followed.count() }}</a>
+
+    {% if current_user.is_authenticated() and user != current_user and user.is_following(current_user) %}
+        <span>Follows you</span>
+    {% endif %}
+
 </div>
 
 <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-    <h3>Posts by {{ user.username }}</h3>
+    <h4>Posts by {{ user.username }}</h4>
     {% include 'partials/_posts.html' %}
 </div>
 

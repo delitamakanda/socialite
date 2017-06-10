@@ -17,15 +17,17 @@
 
 {% block content %}
 {{ super() }}
+ 
 <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
- <h4> Edit post </h4>
 
+ <h4 class="mdl-cell mdl-cell--12-col mdl-typography--headline"> Edit post </h4>
+ 
  <form method="post" name="edit_profile">
      {{form.hidden_tag()}}
-     <div>
+     <div class="mdl-textfield mdl-js-textfield">
          <label for="body">Post</label>
-         <div class="mdl-textfield mdl-js-textfield">
-           {{form.body(size=64)}}
+         <div>
+           {{form.body(class_="mdl-textfield__input")}}
          </div>
      </div>
      {% for error in form.errors.body %}

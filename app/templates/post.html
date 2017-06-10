@@ -22,19 +22,17 @@
 </section>
 
 <section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-    <h3>Comments</h3>
+    <h4 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Comments</h4>
     {% if current_user.can(Permission.COMMENT) %}
-    <form method="post" name="write_articles">
+    <form method="post" name="write_comments">
         {{form.hidden_tag()}}
-        <div>
-            <label for="body">Add a comment</label>
-            <div class="mdl-textfield mdl-js-textfield">
-              {{form.body(size=64)}}
-            </div>
-        </div>
+        <div class="mdl-textfield mdl-js-textfield">
+            <label for="body" class="mdl-textfield__label">Add a comment</label>
+            {{form.body(class_="mdl-textfield__input")}}
         {% for error in form.errors.body %}
-        <span style="color: gray;">{{error}}</span>
+        <span class="mdl-textfield__error">{{error}}</span>
         {% endfor %}
+        </div>
 
         <div>
           <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Comment</button>
@@ -42,7 +40,7 @@
 
     </form>
     {% else %}
-    <div>Please sign in discuss with our team.</div>
+    <div>Please sign in for joining the community.</div>
     {% endif %}
 </section>
 
