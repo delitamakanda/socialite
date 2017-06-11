@@ -20,7 +20,7 @@ class Config:
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 	FLATPAGES_EXTENSION = '.md'
-
+	WHOOSH_BASE = '/ponywhoosh_indexes'
 	ADMINS = ['delita.makanda@gmail.com', 'makanda.delita@orange.fr']
 
 
@@ -85,8 +85,8 @@ class HerokuConfig(ProductionConfig):
 
 		from werkzeug.contrib.fixers import ProxyFix
 		app.wsgi_app = ProxyFix(app.wsgi_app)
-		
-		
+
+
 class UnixConfig(ProductionConfig):
 	@classmethod
 	def init_app(cls, app):
@@ -97,7 +97,7 @@ class UnixConfig(ProductionConfig):
 		syslog_handler = SysLogHandler()
 		syslog_handler.setLevel(logging.WARNING)
 		app.logger.addHandler(syslog_handler)
-		
+
 
 
 config = {

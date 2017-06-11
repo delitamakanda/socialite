@@ -1,6 +1,7 @@
 import hashlib
 from markdown import markdown
 import bleach
+import flask.ext.whooshalchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask.ext.login import UserMixin, AnonymousUserMixin
@@ -24,6 +25,7 @@ class Follow(db.Model):
 
 class Comment(db.Model):
     __tablename__ = 'comments'
+    __searchable__ = ['body']
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
@@ -171,12 +173,12 @@ class User(UserMixin, db.Model):
             url = 'http://www.gravatar.com/avatar'
         hash = hashlib.md5(self.email.encode('utf-8')).hexdigest()
         return '{url}/{hash}?s={size}&d={default}&r={rating}'.format(url=url, hash=hash, size=size, default=default, rating=rating)
-        
-        
+
+
     def generate_reset_token(self, expiration=3600):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
         return s.dumps({'reset': self.id})
-        
+
 
 
     def reset_password(self, token, new_password):
@@ -190,13 +192,13 @@ class User(UserMixin, db.Model):
         self.password = new_password
         db.session.add(self)
         return True
-        
-        
+
+
     def generate_email_change_token(self, new_email, expiration=3600):
         s = Serializer(current_app.config['SECRET_KEY'])
         return s.dumps({'change_email': self.id, 'new_email': new_email})
-        
-        
+
+
 
     def change_email(self, token):
         s = Serializer(current_app.config['SECRET_KEY'])
@@ -284,8 +286,8 @@ class User(UserMixin, db.Model):
             'post_count': self.posts.count()
         }
         return json_user
-        
-    
+
+
 
 
     def __repr__(self):
@@ -293,6 +295,7 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     __tablename__ = 'posts'
+    __searchable__ = ['body']
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)

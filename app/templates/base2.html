@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>{% block title %}{% endblock %} - socialite app</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="{{ url_for('static', filename='styles/vendors/material.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles/styles.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
@@ -22,17 +25,22 @@
     <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid demo-content">
             {% for message in get_flashed_messages() %}
-            <div class="alert alert-info">
-                <button type="button" class="close" data-dismiss="alert">close</button>
+            <div class="alert alert-info alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
                 {{ message }}
             </div>
             {% endfor %}
-            
+
             {% block content %}
+            {% endblock %}
+
+            {% block credits %}
+            {% include 'partials/credits.html' %}
             {% endblock %}
         </div>
     </main>
 </div>
+
 
 {% block scripts %}
 <!--<script src="{{ url_for('static', filename='scripts/vendors/jquery.min.js') }}"></script>-->

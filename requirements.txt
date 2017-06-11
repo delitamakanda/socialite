@@ -25,3 +25,4 @@ httpie==0.9.9
 flask-httpauth==3.2.2
 SQLAlchemy==1.1.5
 Flask-FlatPages==0.6
+flask-whooshalchemy==0.56

@@ -16,31 +16,33 @@
 
         <form method="post" name="login">
             {{form.hidden_tag()}}
-            <div>
-                <label for="email">Email</label>
-                <div class="mdl-textfield mdl-js-textfield">
-                  {{form.email(size=64)}}
-                </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <div>
+                  {{form.email(class_="mdl-textfield__input")}}
+                  <label for="email" class="mdl-textfield__label">Email</label>
+              </div>
             </div>
             {% for error in form.errors.email %}
-            <span style="color: gray;">{{error}}</span>
+            <span style="color:red;">{{error}}</span>
             {% endfor %}
-            <div>
-                <label for="password">Password</label>
-                <div class="mdl-textfield mdl-js-textfield">
-                  {{form.password(size=64)}}
-                </div>
+
+            <div class="mdl-textfield mdl-js-textfield">
+                {{form.password(class_="mdl-textfield__input")}}
+                <label for="password" class="mdl-textfield__label">Password</label>
             </div>
             {% for error in form.errors.password %}
-            <span style="color: gray;">{{error}}</span>
+            <span style="color:red;">{{error}}</span>
             {% endfor %}
+
             <div>
-                <div>
-                  <label>
-                    {{form.remember_me}} Remember Me
-                  </label>
-                  <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Log in</button>
-                </div>
+              <label for="remember_me">
+                {{form.remember_me}} <span>Remember Me</span>
+              </label>
+            </div>
+
+            <div>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Log in</button>
+
                 <p>Forgot your password? <a href="{{ url_for('auth.password_reset_request') }}">Click here to reset it</a>.</p>
             </div>
         </form>
@@ -48,7 +50,24 @@
 
     <div class="mdl-cell mdl-cell--6-col">
         <h5>New user ?</h5>
-        <p><a href="{{ url_for('auth.register') }}">Sign up here</a></p>
+        <ul class="demo-list-item mdl-list">
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              Join the best community
+            </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              Discuss about everything you want with buddies all over the world
+            </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              And many more features soon...
+            </span>
+          </li>
+        </ul>
+        <p><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="{{ url_for('auth.register') }}">Sign up here</a></p>
     </div>
 
 </div>
