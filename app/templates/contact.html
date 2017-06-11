@@ -2,8 +2,8 @@
 {% block title %}Contact form{% endblock %}
 {% block head %}
 {{ super() }}
-    <style>
-    </style>
+<style>
+</style>
 {% endblock %}
 
 {% block navbar %}
@@ -18,64 +18,68 @@
 {{ super() }}
 
 <section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-    <h4>Contact form</h4>
-    
-    {% if success %}
+
+    <div class="mdl-cell mdl-cell--6-col">
+
+        <h4>Contact form</h4>
+
+        {% if success %}
         <div>Thank you for your message. We'll get back at you shortly.</div>
-    {% endif %}
-    
-     <form method="post" name="contact_us" action="{{ url_for('main.contact_us') }}">
-     {{form.hidden_tag()}}
-     <div class="mdl-textfield mdl-js-textfield">
-         <label for="name" class="mdl-textfield__label">Name</label>
-         <div>
-           {{form.name(class_="mdl-textfield__input")}}
-         </div>
-     
-     {% for error in form.errors.name %}
-     <span class="mdl-textfield__error">{{error}}</span>
-     {% endfor %}
-     </div>
-     
-     <div class="mdl-textfield mdl-js-textfield">
-         <label for="name" class="mdl-textfield__label">Email</label>
-         <div>
-           {{form.email(class_="mdl-textfield__input")}}
-         </div>
-     
-     {% for error in form.errors.email %}
-     <span class="mdl-textfield__error">{{error}}</span>
-     {% endfor %}
-     </div>
-     
-     <div class="mdl-textfield mdl-js-textfield">
-         <label for="name" class="mdl-textfield__label">Subject</label>
-         <div>
-           {{form.subject(class_="mdl-textfield__input")}}
-         </div>
-     
-     {% for error in form.errors.subject %}
-     <span class="mdl-textfield__error">{{error}}</span>
-     {% endfor %}
-     </div>
-     
-     <div class="mdl-textfield mdl-js-textfield">
-         <label for="name" class="mdl-textfield__label">Message</label>
-         <div>
-           {{form.message(class_="mdl-textfield__input")}}
-         </div>
-     
-     {% for error in form.errors.message %}
-     <span class="mdl-textfield__error">{{error}}</span>
-     {% endfor %}
-     </div>
+        {% endif %}
 
-     <div>
-         <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Send</button>
-     </div>
-</form>
+        <form method="post" name="contact_us" action="{{ url_for('main.contact_us') }}">
+            {{form.hidden_tag()}}
+            <div class="mdl-textfield mdl-js-textfield">
+                <div>
+                    {{form.name(class_="mdl-textfield__input")}}
+                    <label for="name" class="mdl-textfield__label">Name</label>
+                </div>
+            </div>
+            {% for error in form.errors.name %}
+            <div style="color: red;">{{error}}</div>
+            {% endfor %}
 
-    
+
+            <div class="mdl-textfield mdl-js-textfield">
+                <div>
+                    {{form.email(class_="mdl-textfield__input")}}
+                    <label for="name" class="mdl-textfield__label">Email</label>
+                </div>
+            </div>
+            {% for error in form.errors.email %}
+            <div style="color: red;">{{error}}</div>
+            {% endfor %}
+
+
+            <div class="mdl-textfield mdl-js-textfield">
+                <div>
+                    {{form.subject(class_="mdl-textfield__input")}}
+                    <label for="name" class="mdl-textfield__label">Subject</label>
+                </div>
+            </div>
+            {% for error in form.errors.subject %}
+            <div style="color: red;">{{error}}</div>
+            {% endfor %}
+
+
+            <div class="mdl-textfield mdl-js-textfield">
+                <div>
+                    {{form.message(class_="mdl-textfield__input")}}
+                    <label for="name" class="mdl-textfield__label">Message</label>
+                </div>
+            </div>
+            {% for error in form.errors.message %}
+            <div style="color: red;">{{error}}</div>
+            {% endfor %}
+
+            <div>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Send message</button>
+            </div>
+        </form>
+
+    </div>
+
+
 </section>
 
 {% endblock %}

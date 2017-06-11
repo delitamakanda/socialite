@@ -21,16 +21,21 @@
     {% if current_user.can(Permission.WRITE_ARTICLES) %}
     <form method="post" name="write_articles">
         {{form.hidden_tag()}}
-        <div>
-            <label for="body">Whats 's on your mind ?</label>
+
+        <div class="mdl-textfield mdl-js-textfield">
+
             <div>
               {{form.body(class_="mdl-textfield__input")}}
+              <label for="body" class="mdl-textfield__label">Whats 's on your mind ?</label>
             </div>
+
         </div>
+
         {% for error in form.errors.body %}
-        <span class="mdl-textfield__error">{{error}}</span>
+        <div style="color: red;">{{error}}</div>
         {% endfor %}
-        <br/>
+
+
         <div>
           <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Publish</button>
         </div>
@@ -42,11 +47,13 @@
 </section>
 
 <section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-      <a href="{{ url_for('.show_all') }}" {% if not show_followed %} class="mdl-layout__tab is-active"{% endif %}>All</a>
-      {% if current_user.is_authenticated %}
-      <a href="{{ url_for('.show_followed') }}" {% if show_followed %} class="mdl-layout__tab is-active"{% endif %} class="">Followers</a>
-      {% endif %}
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+        <div class="mdl-tabs__tab-bar">
+          <a href="{{ url_for('.show_all') }}" {% if not show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab ">All</a>
+          {% if current_user.is_authenticated %}
+          <a href="{{ url_for('.show_followed') }}" {% if show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab  ">Followers</a>
+          {% endif %}
+      </div>
     </div>
     <main class="mdl-layout__content">
     <section class="mdl-layout__tab-panel is-active">

@@ -1,7 +1,7 @@
 import hashlib
 from markdown import markdown
 import bleach
-import flask.ext.whooshalchemy
+#import flask.ext.whooshalchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask.ext.login import UserMixin, AnonymousUserMixin
@@ -25,7 +25,7 @@ class Follow(db.Model):
 
 class Comment(db.Model):
     __tablename__ = 'comments'
-    __searchable__ = ['body']
+    #__searchable__ = ['body']
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
@@ -295,7 +295,7 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     __tablename__ = 'posts'
-    __searchable__ = ['body']
+    #__searchable__ = ['body']
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
