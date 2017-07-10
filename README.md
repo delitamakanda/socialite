@@ -3,10 +3,8 @@
 
 work in progress
 
-## front-end
-[materialize framework by Google guidelines](https://getmdl.io/index.html)
-[components](https://getmdl.io/components/index.html#textfields-section)
-[book](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world/page/5)
+## Resources
+* [book](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world/page/5)
 
 
 ## commands
@@ -25,4 +23,4 @@ work in progress
 * http --auth <email>:<password> --json GET http://127.0.0.1:5000/api/v1.0/token
 
 ## flask flat pages
-[la puissance de python](https://pythonhosted.org/Flask-FlatPages/)
+[flat pages](https://pythonhosted.org/Flask-FlatPages/)
