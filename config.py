@@ -20,7 +20,7 @@ class Config:
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 	FLATPAGES_EXTENSION = '.md'
-	WHOOSH_BASE = '/ponywhoosh_indexes'
+	FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'headerid']
 	ADMINS = ['delita.makanda@gmail.com', 'makanda.delita@orange.fr']
 
 
