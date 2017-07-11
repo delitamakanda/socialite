@@ -1,5 +1,5 @@
-title:
-date:
-tags:
+title: Developpers
+date: 2017-07-11
+tags: [dev, api, doc]
 
-For developpers
+In construction. Here is the page for the documentation for Socialite API
