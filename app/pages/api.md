@@ -1,4 +1,4 @@
-title: Developpers
+title: API
 date: 2017-07-11
 tags: [dev, api, doc]
 
