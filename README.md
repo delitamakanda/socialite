@@ -4,7 +4,8 @@
 *work in progress*
 
 ## Resources
-* [complete tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world/page/5)
+* [tutorial flask social app](https://blog.miguelgrinberg.com/)
+* [front-end](https://www.liquidlight.co.uk/blog/article/getting-started-with-webpack-3/)
 
 ## commands
 ```
