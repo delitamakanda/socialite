@@ -7,7 +7,7 @@ from flask.ext.pagedown import PageDown
 from flask.ext.flatpages import FlatPages
 from config import config
 
-from .util import assets
+from util import assets
 
 mail = Mail()
 moment = Moment()
