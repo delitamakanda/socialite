@@ -2,9 +2,9 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
-	SECRET_KEY = 'dummy_secret_key'
-	MAIL_SUBJECT_PREFIX = 'Socialite'
-	MAIL_SENDER = 'Socialite Team <team.socialite.app@gmail.com>'
+	SECRET_KEY = os.environ.get('SECRET_KEY')
+	MAIL_SUBJECT_PREFIX = 'socialite app'
+	MAIL_SENDER = 'Socialite Team'
 	ADMIN = ['delita.makanda@gmail.com']
 	POSTS_PER_PAGE = 10
 	FOLLOWERS_PER_PAGE = 20
@@ -14,7 +14,7 @@ class Config:
 	SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	SQLALCHEMY_RECORD_QUERIES = True
-	MAIL_SERVER = 'smtp.googlemail.com'
+	MAIL_SERVER = 'smtp.mailgun.org'
 	MAIL_PORT = 587
 	MAIL_USE_TLS = True
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
@@ -32,7 +32,7 @@ class DevelopmentConfig(Config):
 	"""docstring for DevelopmentConfig."""
 	DEBUG = True
 	FLATPAGES_AUTO_RELOAD = DEBUG
-	MAIL_SERVER = 'smtp.googlemail.com'
+	MAIL_SERVER = 'smtp.mailgun.org'
 	MAIL_PORT = 587
 	MAIL_USE_TLS = True
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
