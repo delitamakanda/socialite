@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>{% block title %}{% endblock %} - socialite app</title>
     {% assets "root_css" %}
-        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        <link rel="stylesheet" href="{{ ASSET_URL }}"/>
     {% endassets %}
-    
+
     {% assets "root_js" %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}

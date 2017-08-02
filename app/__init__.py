@@ -42,19 +42,19 @@ def create_app(config_name):
     app.register_blueprint(main_blueprint)
     app.register_blueprint(api_1_0_blueprint, url_prefix='/api/v1.0')
 
-    bundles = {
-      'root_js': Bundle(
+    root_js = Bundle(
         'js/lib/jquery-2.1.1.min.js',
         'js/app.js',
-        output='dist/bundle.js'),
+        output='dist/bundle.js')
 
-      'root_css': Bundle(
+    root_css = Bundle(
         'css/lib/reset.css',
         'css/common.css',
         'css/app.css',
         output='dist/styles.css')
-    }
 
-    assets.register(bundles)
+
+    assets.register('root_js', root_js)
+    assets.register('root_css', root_css)
 
     return app
