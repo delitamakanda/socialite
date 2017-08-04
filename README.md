@@ -3,11 +3,6 @@
 
 *work in progress*
 
-## Resources
-* [tutorial flask social app](https://blog.miguelgrinberg.com/)
-* [front-end](https://www.liquidlight.co.uk/blog/article/getting-started-with-webpack-3http://bulma.io/)
-* [bulma](http://bulma.io/)
-
 ## commands
 ```
 python manage.py db init
@@ -30,4 +25,5 @@ http --auth <email>:<password> --json GET http://127.0.0.1:5000/api/v1.0/token
 ```
 
 ## flask flat pages
+Manage static pages with Flask
 [flat pages](https://pythonhosted.org/Flask-FlatPages/)
