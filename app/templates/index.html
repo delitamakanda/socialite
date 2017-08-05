@@ -39,10 +39,10 @@
 <div class="container">
     <div class="section">
 
-        <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-                <div class="mdl-tabs__tab-bar center-align">
-                    <a href="{{ url_for('.show_all') }}" {% if not show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab ">All</a>
+        <div>
+            <div>
+                <div class="right-align">
+                    Filter by <a href="{{ url_for('.show_all') }}" {% if not show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab ">All</a> |
                     {% if current_user.is_authenticated %}
                     <a href="{{ url_for('.show_followed') }}" {% if show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab  ">Followers</a>
                     {% endif %}
