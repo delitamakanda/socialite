@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Post{% endblock %}
+{% block title %}Permalink{% endblock %}
 {% block head %}
 {{ super() }}
     <style>
@@ -17,32 +17,33 @@
 {% block content %}
 {{ super() }}
 
-<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-    {% include 'partials/_posts.html' %}
-</section>
-
-<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-    <h4 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Comments</h4>
+<div class="container">
+    <div class="card">
     {% if current_user.can(Permission.COMMENT) %}
     <form method="post" name="write_comments">
         {{form.hidden_tag()}}
-        <div class="mdl-textfield mdl-js-textfield">
-            <label for="body" class="mdl-textfield__label">Add a comment</label>
-            {{form.body(class_="mdl-textfield__input")}}
-        {% for error in form.errors.body %}
-        <span class="mdl-textfield__error">{{error}}</span>
-        {% endfor %}
+        <div class="card-content">
+            <label for="body" class="mdl-textfield__label">Leave a comment for this post</label>
+            {{form.body(class_="materialize-textarea")}}
+            {% for error in form.errors.body %}
+            <p style="color: red;">{{error}}</p>
+            {% endfor %}
         </div>
 
-        <div>
-          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Comment</button>
-        </div>
+        <button type="submit" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></button>
 
     </form>
-    {% else %}
-    <div>Please sign in for joining the community.</div>
     {% endif %}
-</section>
+</div>
+</div>
+
+<div class="container">
+
+    {% include 'partials/_posts.html' %}
+</div>
+
+
+
 
 {% endblock %}
 

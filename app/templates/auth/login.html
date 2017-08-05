@@ -2,72 +2,81 @@
 {% block title %}Login{% endblock %}
 {% block head %}
 {{ super() }}
-    <style>
-    </style>
+<style>
+</style>
 {% endblock %}
 
+{% block titleheadline %}
+    Welcome to socialite !
+{% endblock %}
+
+{% block textheadline %}
+    Have fun and come back later !
+{% endblock %}
 
 {% block content %}
 {{ super() }}
-<div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+<div class="container">
 
-    <div class="mdl-cell mdl-cell--6-col">
-        <h5>Login</h5>
+    <div class="row">
 
-        <form method="post" name="login">
-            {{form.hidden_tag()}}
-            <div class="mdl-textfield mdl-js-textfield">
-                <div>
-                  {{form.email(class_="mdl-textfield__input")}}
-                  <label for="email" class="mdl-textfield__label">Email</label>
-              </div>
+        <div class="col s12 m6 l6">
+            <h5>Signin</h5>
+
+            <form method="post" name="login">
+                {{form.hidden_tag()}}
+                <div class="input-field">
+                    {{form.email(class_="mdl-textfield__input")}}
+                    <label for="email" class="validate">Email</label>
+                </div>
+                {% for error in form.errors.email %}
+                <p style="color:red;">{{error}}</p>
+                {% endfor %}
+
+                <div class="input-field">
+                    {{form.password(class_="mdl-textfield__input")}}
+                    <label for="password" class="validate">Password</label>
+                </div>
+                {% for error in form.errors.password %}
+                <p style="color:red;">{{error}}</p>
+                {% endfor %}
+
+                <div class="input-field">
+                    {{form.remember_me}}
+                    <label for="remember_me">Remember Me</label>
+
+                </div>
+
+                <div class="input-field">
+                    <button type="submit" class="waves-effect waves-light btn">Login</button>
+                </div>
+
+                <div class="input-field">
+                    <p>Forgot your password? <a href="{{ url_for('auth.password_reset_request') }}">Click here to reset it</a>.</p>
+                </div>
+            </form>
+        </div>
+
+        <div class="col s12 m6 l6">
+            <h5>New user ?</h5>
+            <ul class="browser-default">
+                <li>
+                    <i class="material-icons">contacts</i>
+                    Join the best community
+                </li>
+                <li>
+                    <i class="material-icons">contact_mail</i>
+                    Discuss about everything you want with buddies all over the world
+                </li>
+                <li>
+                    <i class="material-icons">code</i>
+                    And many more features soon...
+                </li>
+            </ul>
+            <div class="input-field">
+                <a class="waves-effect waves-light btn" href="{{ url_for('auth.register') }}">Sign up</a>
             </div>
-            {% for error in form.errors.email %}
-            <div style="color:red;">{{error}}</div>
-            {% endfor %}
-
-            <div class="mdl-textfield mdl-js-textfield">
-                {{form.password(class_="mdl-textfield__input")}}
-                <label for="password" class="mdl-textfield__label">Password</label>
-            </div>
-            {% for error in form.errors.password %}
-            <div style="color:red;">{{error}}</div>
-            {% endfor %}
-
-            <div>
-              <label for="remember_me">
-                {{form.remember_me}} <span>Remember Me</span>
-              </label>
-            </div>
-
-            <div>
-                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Log in</button>
-
-                <p>Forgot your password? <a href="{{ url_for('auth.password_reset_request') }}">Click here to reset it</a>.</p>
-            </div>
-        </form>
-    </div>
-
-    <div class="mdl-cell mdl-cell--6-col">
-        <h5>New user ?</h5>
-        <ul class="demo-list-item mdl-list">
-          <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-              Join the best community
-            </span>
-          </li>
-          <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-              Discuss about everything you want with buddies all over the world
-            </span>
-          </li>
-          <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-              And many more features soon...
-            </span>
-          </li>
-        </ul>
-        <p><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="{{ url_for('auth.register') }}">Sign up here</a></p>
+        </div>
     </div>
 
 </div>

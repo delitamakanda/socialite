@@ -17,27 +17,29 @@
 
 {% block content %}
 {{ super() }}
- 
-<div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
 
- <h4 class="mdl-cell mdl-cell--12-col mdl-typography--headline"> Edit post </h4>
- 
+<div class="container">
+
+ <h4> Edit post </h4>
+
+ <p>Edit your post using the form below.</p>
+
  <form method="post" name="edit_profile">
-     {{form.hidden_tag()}}
-     <div class="mdl-textfield mdl-js-textfield">
+     <div class="card">
+         <div class="card-content">
+         {{form.hidden_tag()}}
          <label for="body">Post</label>
-         <div>
-           {{form.body(class_="mdl-textfield__input")}}
+         <div class="input-field">
+               {{form.body(class="materialize-textarea")}}
          </div>
-     </div>
-     {% for error in form.errors.body %}
-     <span style="color: gray;">{{error}}</span>
-     {% endfor %}
+         {% for error in form.errors.body %}
+         <p style="color: red;">{{error}}</p>
+         {% endfor %}
 
 
-     <div>
-         <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit</button>
+         <button type="submit" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></button>
      </div>
+    </div>
  </form>
 
 </div>

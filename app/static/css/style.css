@@ -12,3 +12,8 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+
+.parallax-container {
+    min-height: 380px;
+    height: auto;
+}

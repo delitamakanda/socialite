@@ -18,14 +18,17 @@
 {% block content %}
 {{ super() }}
 
-<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-    <h3>Comments Moderation</h3>
+<section class="container">
+    <h5>Moderate comments</h5>
 
     {% set moderate = True %}
     {% include "partials/_comments.html" %}
     {% if pagination %}
+    <div class="center-align">
         {{ macros.pagination_widget(pagination, '.moderate') }}
+    </div>
     {% endif %}
+    <br>
 </section>
 
 {% endblock %}

@@ -1,42 +1,48 @@
 
 
 <section>
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-        {% for post in posts %}
-          <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-              <div class="section__circle-container__circle">
-                  <a href="{{ url_for('.user', username=post.author.username) }}">
-                      <img src="{{ post.author.gravatar(size=50) }}">
-                  </a>
-              </div>
-          </div>
-        <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-          <h5><a href="{{ url_for('.user', username=post.author.username) }}">{{ post.author.username }}</a> {{ moment(post.timestamp).fromNow() }}</h5>
-          {% if post.body_html %}
-            {{ post.body_html | safe }}
-          {% else %}
-            {{ post.body }}
-          {% endif %}
-          <div class="permalink">
-              {% if current_user == post.author %}
-              <a href="{{ url_for('.edit', id=post.id) }}">Edit</a>
-              {% elif current_user.is_administrator() %}
-              <a href="{{ url_for('.edit', id=post.id) }}">Edit as Admin</a>
-              {% endif %}
-              <a href="{{ url_for('.post', id=post.id) }}">Permalink</a>
-              <a href="{{ url_for('.post', id=post.id) }}#comments">{{ post.comments.count() }} comment(s)</a>
-          </div>
-        </div>
-        {% endfor %}
-        </div>
+    <div>
+        <ul class="collection">
+            {% for post in posts %}
+            <li class="collection-item avatar">
+                <a href="{{ url_for('.user', username=post.author.username) }}">
+                    <img src="{{ post.author.gravatar(size=50) }}" class="circle">
+                </a>
+                <p>
+                    {% if post.body_html %}
+                    {{ post.body_html | safe }}
+                    {% else %}
+                    {{ post.body }}
+                    {% endif %}
+                </p>
+                <span class="title"><a href="{{ url_for('.user', username=post.author.username) }}">{{ post.author.username }}</a> {{ moment(post.timestamp).fromNow() }}</span>
+
+                <div class="permalink">
+                    {% if current_user == post.author %}
+                    <a href="{{ url_for('.edit', id=post.id) }}">Edit</a> |
+                    {% elif current_user.is_administrator() %}
+                    <a href="{{ url_for('.edit', id=post.id) }}">Edit as Admin</a> |
+                    {% endif %}
+                    <a href="{{ url_for('.post', id=post.id) }}">Permalink</a>
+                    <a href="{{ url_for('.post', id=post.id) }}#comments">
+                        {% if post.comments.count() <= 1 %}
+                            <span class="new badge blue" data-badge-caption="">{{ post.comments.count() }} comment</span>
+                        {% else %}
+                            <span class="new badge red" data-badge-caption="">{{ post.comments.count() }} comments</span>
+                        {% endif %}
+                    </a>
+                </div>
+
+            </li>
+            {% endfor %}
+        </ul>
         <div class="mdl-card__actions">
         </div>
     </div>
 </section>
 
-<section class="mdl-color--white mdl-cell mdl-cell--12-col mdl-grid">
+<section>
     <div>
-      {% include 'partials/_comments.html' %}
-  </div>
+        {% include 'partials/_comments.html' %}
+    </div>
 </section>

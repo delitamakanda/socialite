@@ -34,6 +34,30 @@
             </div>
             {% endfor %}
 
+            {% block navbar %}
+            {% include 'partials/navbar.html' %}
+            {% endblock %}
+
+            {% block headline %}
+            <div id="index-banner" class="parallax-container">
+                <div class="section no-pad-bot">
+                    <div class="container">
+                        <br><br>
+                        <h1 class="header center white-text text-lighten-2">{% block titleheadline %}{% endblock %}</h1>
+                        <div class="row center">
+                            <h5 class="header white-text col s12 light">{% block textheadline %}{% endblock %}</h5>
+                        </div>
+                        <div class="row center">
+                          <a href="#" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+                        </div>
+                        <br><br>
+
+                    </div>
+                </div>
+                <div class="parallax"><img src="https://images.unsplash.com/photo-1491466424936-e304919aada7?dpr=1&auto=format&fit=crop&w=1199&h=801&q=80&cs=tinysrgb&crop=" alt="Unsplashed background img 1" style="display: block; transform: translate3d(-50%, 151px, 0px);"></div>
+            </div>
+            {% endblock %}
+
             {% block content %}
             {% endblock %}
 

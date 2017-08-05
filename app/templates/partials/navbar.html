@@ -1,10 +1,10 @@
-<nav class="teal lighten-3" role="navigation">
+<nav class="blue lighten-1" role="navigation">
   <div class="nav-wrapper container"><a id="logo-container" href="{{ url_for('main.index') }}" class="brand-logo">socialite</a>
     <ul class="right hide-on-med-and-down">
         <li><a href="{{ url_for('main.index') }}">Feed</a></li>
       {% if current_user.is_authenticated() %}
         <li>
-            <a href="">
+            <a href="{{ url_for('main.user', username=current_user.username) }}">
                 <img src="{{ current_user.gravatar(size=256) }}" class="demo-avatar">
                 {{ current_user.email }}
             </a>
@@ -12,12 +12,12 @@
         <li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
       {% else %}
         <li>
-            <a href="">
+            <a href="{{ url_for('auth.login') }}">
                 <img src="{{ url_for('static', filename='images/user.jpg') }}" class="demo-avatar">
                 Hello, Stranger !
             </a>
         </li>
-        <li><a href="{{ url_for('auth.login') }}">Sign In</a></li>
+        <li><a href="{{ url_for('auth.login') }}">Sign In / Sign Up</a></li>
       {% endif %}
     </ul>
 
@@ -37,7 +37,7 @@
                     Hello, Stranger !
                 </a>
             </li>
-            <li><a href="{{ url_for('auth.login') }}">Sign In</a></li>
+            <li><a href="{{ url_for('auth.login') }}">Sign In / Sign Up</a></li>
         {% endif %}
     </ul>
     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
