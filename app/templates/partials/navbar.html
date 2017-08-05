@@ -1,23 +1,45 @@
-<header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
-    <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">socialite</span>
-      <div class="mdl-layout-spacer"></div>
-      <!--div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-        <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-          <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" id="search">
-          <label class="mdl-textfield__label" for="search">Enter your query...</label>
-        </div>
-    </div-->
-      <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-        <i class="material-icons">more_vert</i>
-      </button>
-      <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-        <li class="mdl-menu__item"><a href="/about">About</a></li>
-        <li class="mdl-menu__item"><a href="{{ url_for('main.contact_us') }}">Contact</a></li>
-        <li class="mdl-menu__item"><a href="/legal">Legal information</a></li>
-      </ul>
-</div>
-</header>
+<nav class="teal lighten-3" role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="{{ url_for('main.index') }}" class="brand-logo">socialite</a>
+    <ul class="right hide-on-med-and-down">
+        <li><a href="{{ url_for('main.index') }}">Feed</a></li>
+      {% if current_user.is_authenticated() %}
+        <li>
+            <a href="">
+                <img src="{{ current_user.gravatar(size=256) }}" class="demo-avatar">
+                {{ current_user.email }}
+            </a>
+        </li>
+        <li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
+      {% else %}
+        <li>
+            <a href="">
+                <img src="{{ url_for('static', filename='images/user.jpg') }}" class="demo-avatar">
+                Hello, Stranger !
+            </a>
+        </li>
+        <li><a href="{{ url_for('auth.login') }}">Sign In</a></li>
+      {% endif %}
+    </ul>
+
+    <ul id="nav-mobile" class="side-nav">
+        {% if current_user.is_authenticated() %}
+            <li>
+                <a href="">
+                    <img src="{{ current_user.gravatar(size=256) }}" class="demo-avatar">
+                    {{ current_user.email }} !
+                </a>
+            </li>
+            <li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
+        {% else %}
+            <li>
+                <a href="">
+                    <img src="{{ url_for('static', filename='images/user.jpg') }}" class="demo-avatar">
+                    Hello, Stranger !
+                </a>
+            </li>
+            <li><a href="{{ url_for('auth.login') }}">Sign In</a></li>
+        {% endif %}
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+  </div>
+</nav>

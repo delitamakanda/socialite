@@ -7,67 +7,65 @@
     </style>
 {% endblock %}
 
-{% block navbar %}
-{{ super() }}
-{% endblock %}
-
-{% block dashboard %}
-{{ super() }}
-{% endblock %}
-
 {% block content %}
 {{ super() }}
-<section class="mdl-color--white mdl-shadow--2dp section--center  mdl-cell mdl-cell--12-col mdl-grid ">
-    {% if current_user.can(Permission.WRITE_ARTICLES) %}
-    <form method="post" name="write_articles">
-        {{form.hidden_tag()}}
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        {% if current_user.can(Permission.WRITE_ARTICLES) %}
+        <form method="post" name="write_articles">
+            {{form.hidden_tag()}}
 
-        <div class="mdl-textfield mdl-js-textfield">
+            <div class="mdl-textfield mdl-js-textfield">
 
-            <div>
-              {{form.body(class_="mdl-textfield__input")}}
-              <label for="body" class="mdl-textfield__label">Whats 's on your mind ?</label>
+                <div>
+                  {{form.body(class_="mdl-textfield__input")}}
+                  <label for="body" class="mdl-textfield__label">Whats 's on your mind ?</label>
+                </div>
+
             </div>
 
-        </div>
-
-        {% for error in form.errors.body %}
-        <div style="color: red;">{{error}}</div>
-        {% endfor %}
+            {% for error in form.errors.body %}
+            <div style="color: red;">{{error}}</div>
+            {% endfor %}
 
 
-        <div>
-          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Publish</button>
-        </div>
+            <div>
+              <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Publish</button>
+            </div>
 
-    </form>
-    {% else %}
-    <div>Please sign in for joining the community.</div>
-    {% endif %}
-</section>
+        </form>
 
-<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-        <div class="mdl-tabs__tab-bar">
-          <a href="{{ url_for('.show_all') }}" {% if not show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab ">All</a>
-          {% if current_user.is_authenticated %}
-          <a href="{{ url_for('.show_followed') }}" {% if show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab  ">Followers</a>
-          {% endif %}
-      </div>
-    </div>
-    <main class="mdl-layout__content">
-    <section class="mdl-layout__tab-panel is-active">
-      <div class="page-content">
-          {% include 'partials/_posts.html' %}
-          {% if pagination %}
-          <div class="pagination">
-              {{ macros.pagination_widget(pagination, '.index') }}
+        {% endif %}
+</div>
+</div>
+
+<div class="container">
+  <div class="section">
+
+        <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+              <a href="{{ url_for('.show_all') }}" {% if not show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab ">All</a>
+              {% if current_user.is_authenticated %}
+              <a href="{{ url_for('.show_followed') }}" {% if show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab  ">Followers</a>
+              {% endif %}
           </div>
-          {% endif %}
-      </div>
-    </section>
-  </main>
-</section>
+        </div>
+        <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active">
+          <div class="page-content">
+              {% include 'partials/_posts.html' %}
+              {% if pagination %}
+              <div class="pagination">
+                  {{ macros.pagination_widget(pagination, '.index') }}
+              </div>
+              {% endif %}
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
 
