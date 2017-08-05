@@ -2,6 +2,8 @@
 
 *work in progress*
 
+[![CircleCI](https://circleci.com/gh/delitamakanda/socialite/tree/master.svg?style=svg)](https://circleci.com/gh/delitamakanda/socialite/tree/master)
+
 ## commands
 ```
 python manage.py db init
