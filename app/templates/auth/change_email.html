@@ -3,8 +3,8 @@
 
 {% block head %}
 {{ super() }}
-    <style>
-    </style>
+<style>
+</style>
 {% endblock %}
 
 {% block navbar %}
@@ -18,37 +18,40 @@
 {% block content %}
 {{ super() }}
 
-<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
- <h4> Change email</h4>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel light-grey">
+                <h4> Change email</h4>
 
-<form method="post" name="login">
-            {{form.hidden_tag()}}
-            <div>
-                <label for="email ">Email</label>
-                <div class="mdl-textfield mdl-js-textfield">
-                  {{form.email (size=64)}}
-                </div>
+                <form method="post" name="login">
+
+                    {{form.hidden_tag()}}
+                    <div class="input-field">
+                        <label for="email ">Email</label>
+                        {{form.email (size=64)}}
+                    </div>
+                    {% for error in form.errors.email %}
+                    <p style="color: gray;">{{error}}</p>
+                    {% endfor %}
+
+                    <div class="input-field">
+                        <label for="password">Password</label>
+                        {{form.password(size=64)}}
+                    </div>
+
+                    {% for error in form.errors.password %}
+                    <p style="color: gray;">{{error}}</p>
+                    {% endfor %}
+
+                    <div class="input-field">
+                        <button type="submit" class="waves-effect waves-light btn">Change email</button>
+                    </div>
+                </form>
             </div>
-            {% for error in form.errors.email %}
-            <span style="color: gray;">{{error}}</span>
-            {% endfor %}
-            <div>
-                <label for="password">Password</label>
-                <div class="mdl-textfield mdl-js-textfield">
-                  {{form.password(size=64)}}
-                </div>
-            </div>
-            {% for error in form.errors.password %}
-            <span style="color: gray;">{{error}}</span>
-            {% endfor %}
-         
-            <div>
-             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Change email</button>
-            </div>
-        </form>
-        
+        </div>
+    </div>
 </div>
-
 
 {% endblock %}
 
