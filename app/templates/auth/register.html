@@ -7,71 +7,76 @@
 {% endblock %}
 
 
-{% block titleheadline %}
-    Register
-{% endblock %}
-
-{% block textheadline %}
-    Create your personnal account
-{% endblock %}
 
 
 {% block content %}
 {{ super() }}
 
+{% block headline %}
+{% endblock %}
 
-<div class="container">
+<section class="container">
 
     <div class="row">
 
-        <form method="post" name="register" class="col s12">
-            {{form.hidden_tag()}}
+        <div class="col s12">
 
-            <div class="input-field">
-                {{form.email(class_="validate")}}
-                <label for="email">Email</label>
+            <div class="card-panel light-grey">
+
+                <h4>Create a personnal account</h4>
+
+                <p>Your safety is our priorities.</p>
+
+                <form method="post" name="register">
+                    {{form.hidden_tag()}}
+
+                    <div class="input-field">
+                        {{form.email(class_="validate")}}
+                        <label for="email">Email</label>
+                    </div>
+
+                    {% for error in form.errors.email %}
+                    <p style="color: red;">{{error}}</p>
+                    {% endfor %}
+
+                    <div class="input-field">
+                        {{form.username(class_="validate")}}
+                        <label for="username">Username</label>
+                    </div>
+
+                    {% for error in form.errors.username %}
+                    <p style="color: red;">{{error}}</p>
+                    {% endfor %}
+
+                    <div class="input-field">
+                        {{form.password(class_="validate")}}
+                        <label for="password">Password</label>
+                    </div>
+
+                    {% for error in form.errors.password %}
+                    <p style="color: red;">{{error}}</p>
+                    {% endfor %}
+
+
+                    <div class="input-field">
+                        {{form.password2(class_="validate")}}
+                        <label for="password2">Password confirmation</label>
+                    </div>
+
+                    {% for error in form.errors.password2 %}
+                    <p style="color: red;">{{error}}</p>
+                    {% endfor %}
+
+                    <div class="input-field">
+                        <button type="submit" class="waves-effect waves-light btn">Register</button>
+                    </div>
+                </form>
             </div>
-
-            {% for error in form.errors.email %}
-            <p style="color: red;">{{error}}</p>
-            {% endfor %}
-
-            <div class="input-field">
-                {{form.username(class_="validate")}}
-                <label for="username">Username</label>
-            </div>
-
-            {% for error in form.errors.username %}
-            <p style="color: red;">{{error}}</p>
-            {% endfor %}
-
-            <div class="input-field">
-                {{form.password(class_="validate")}}
-                <label for="password">Password</label>
-            </div>
-
-            {% for error in form.errors.password %}
-            <p style="color: red;">{{error}}</p>
-            {% endfor %}
-
-
-            <div class="input-field">
-                {{form.password2(class_="validate")}}
-                <label for="password2">Password confirmation</label>
-            </div>
-
-            {% for error in form.errors.password2 %}
-            <p style="color: red;">{{error}}</p>
-            {% endfor %}
-
-            <div class="input-field">
-                <button type="submit" class="waves-effect waves-light btn">Register</button>
-            </div>
-        </form>
+        </div>
     </div>
+</section>
 
 
-</div>
 
 
 {% endblock %}

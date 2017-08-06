@@ -17,66 +17,70 @@
 {% block content %}
 {{ super() }}
 
-<section class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+<section class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel light-grey">
 
-    <div class="mdl-cell mdl-cell--6-col">
 
-        <h4>Contact form</h4>
+        <h4>Contact us</h4>
+
+        <p>Fill the form below to send me a message. <br>I swear i answer you in the 48 hours.</p>
 
         {% if success %}
-        <div>Thank you for your message. We'll get back at you shortly.</div>
+        <div>
+            Thank you for your message. We'll get back at you shortly.
+        </div>
         {% endif %}
 
         <form method="post" name="contact_us" action="{{ url_for('main.contact_us') }}">
             {{form.hidden_tag()}}
-            <div class="mdl-textfield mdl-js-textfield">
-                <div>
-                    {{form.name(class_="mdl-textfield__input")}}
-                    <label for="name" class="mdl-textfield__label">Name</label>
-                </div>
+            <div class="input-field">
+                {{form.name()}}
+                <label for="name">Name</label>
             </div>
+
             {% for error in form.errors.name %}
-            <div style="color: red;">{{error}}</div>
+                <p style="color: red;">{{error}}</p>
             {% endfor %}
 
 
-            <div class="mdl-textfield mdl-js-textfield">
-                <div>
-                    {{form.email(class_="mdl-textfield__input")}}
-                    <label for="name" class="mdl-textfield__label">Email</label>
-                </div>
+            <div class="input-field">
+                {{form.email()}}
+                <label for="name">Email</label>
             </div>
+
             {% for error in form.errors.email %}
-            <div style="color: red;">{{error}}</div>
+                <p style="color: red;">{{error}}</p>
             {% endfor %}
 
 
-            <div class="mdl-textfield mdl-js-textfield">
-                <div>
-                    {{form.subject(class_="mdl-textfield__input")}}
-                    <label for="name" class="mdl-textfield__label">Subject</label>
-                </div>
+            <div class="input-field">
+                {{form.subject()}}
+                <label for="name">Subject</label>
             </div>
+
             {% for error in form.errors.subject %}
-            <div style="color: red;">{{error}}</div>
+            <p style="color: red;">{{error}}</p>
             {% endfor %}
 
 
-            <div class="mdl-textfield mdl-js-textfield">
-                <div>
-                    {{form.message(class_="mdl-textfield__input")}}
-                    <label for="name" class="mdl-textfield__label">Message</label>
-                </div>
+            <div class="input-field">
+                {{form.message(class_="materialize-textarea")}}
+                <label for="name">Message</label>
             </div>
+
             {% for error in form.errors.message %}
-            <div style="color: red;">{{error}}</div>
+                <p style="color: red;">{{error}}</p>
             {% endfor %}
 
-            <div>
-                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Send message</button>
+            <div class="input-field center-align">
+                <button type="submit" class="waves-effect waves-light btn">Send a message</button>
             </div>
         </form>
 
+    </div>
+    </div>
     </div>
 
 
