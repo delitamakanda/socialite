@@ -1,3 +1,29 @@
 body {
     background-color: #f9f9f9;
 }
+
+
+.alert {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #2196F3;
+    color: white;
+    margin-bottom: 15px;
+    opacity: 1;
+    transition: opacity 0.6s;
+}
+
+.close-btn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #000000;
+}

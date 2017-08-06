@@ -23,20 +23,14 @@
 </head>
 <body>
 <div>
-
+    {% block navbar %}
+    {% include 'partials/navbar.html' %}
+    {% endblock %}
 
     <main>
         <div>
-            {% for message in get_flashed_messages() %}
-            <div class="alert alert-info alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                {{ message }}
-            </div>
-            {% endfor %}
 
-            {% block navbar %}
-            {% include 'partials/navbar.html' %}
-            {% endblock %}
+
 
             {% block headline %}
             <div id="index-banner" class="parallax-container">
@@ -57,6 +51,15 @@
                 <div class="parallax"><img src="https://images.unsplash.com/photo-1491466424936-e304919aada7?dpr=1&auto=format&fit=crop&w=1199&h=801&q=80&cs=tinysrgb&crop=" alt="Unsplashed background img 1" style="display: block; transform: translate3d(-50%, 151px, 0px);"></div>
             </div>
             {% endblock %}
+
+            {% for message in get_flashed_messages() %}
+            <div class="container">
+                <div class="alert">
+                    <a href="#" class="close-btn">×</a>
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
 
             {% block content %}
             {% endblock %}
