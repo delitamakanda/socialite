@@ -1,0 +1,35 @@
+{
+  "name": "socialite",
+  "scripts": {
+  },
+  "env": {
+    "api": {
+      "required": true
+    },
+    "CONFIG": {
+      "required": true
+    },
+    "MAIL_PASSWORD": {
+      "required": true
+    },
+    "MAIL_USERNAME": {
+      "required": true
+    },
+    "SECRET_KEY": {
+      "required": true
+    },
+    "SSL_DISABLE": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
