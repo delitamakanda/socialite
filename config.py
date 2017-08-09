@@ -14,11 +14,11 @@ class Config:
 	SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	SQLALCHEMY_RECORD_QUERIES = True
-	MAIL_SERVER = 'smtp.mailgun.org'
-	MAIL_PORT = 587
+	MAIL_SERVER = os.environ.get('MAILGUN_SMTP_SERVER')
+	MAIL_PORT = os.environ.get('MAILGUN_SMTP_PORT')
 	MAIL_USE_TLS = True
-	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+	MAIL_USERNAME = os.environ.get('MAILGUN_SMTP_LOGIN')
+	MAIL_PASSWORD = os.environ.get('MAILGUN_SMTP_PASSWORD')
 	FLATPAGES_EXTENSION = '.md'
 	FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'headerid']
 	ADMINS = ['delita.makanda@gmail.com', 'makanda.delita@orange.fr']
