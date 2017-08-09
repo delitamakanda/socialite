@@ -4,7 +4,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
 	SECRET_KEY = os.environ.get('SECRET_KEY')
 	MAIL_SUBJECT_PREFIX = 'socialite app'
-	MAIL_SENDER = os.environ.get('MAIL_USERNAME')
+	MAIL_SENDER = 'Socialite Team <mail.the-socialite-app.herokuapp.com>'
 	ADMIN = ['delita.makanda@gmail.com']
 	POSTS_PER_PAGE = 10
 	FOLLOWERS_PER_PAGE = 20
@@ -14,11 +14,11 @@ class Config:
 	SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	SQLALCHEMY_RECORD_QUERIES = True
-	MAIL_SERVER = os.environ.get('MAILGUN_SMTP_SERVER')
-	MAIL_PORT = os.environ.get('MAILGUN_SMTP_PORT')
+	MAIL_SERVER = os.environ.get('SMTP_SERVER')
+	MAIL_PORT = os.environ.get('SMTP_PORT')
 	MAIL_USE_TLS = True
-	MAIL_USERNAME = os.environ.get('MAILGUN_SMTP_LOGIN')
-	MAIL_PASSWORD = os.environ.get('MAILGUN_SMTP_PASSWORD')
+	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 	FLATPAGES_EXTENSION = '.md'
 	FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'headerid']
 	ADMINS = ['delita.makanda@gmail.com', 'makanda.delita@orange.fr']
