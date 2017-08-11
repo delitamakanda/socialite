@@ -1,7 +1,5 @@
 title: FAQ
-
 date: 2017-06-04
-
 tags: [general, faq, help]
 
 1. I can't log in to my account.
