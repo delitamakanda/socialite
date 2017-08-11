@@ -4,7 +4,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
 	SECRET_KEY = os.environ.get('SECRET_KEY')
 	MAIL_SUBJECT_PREFIX = 'socialite app'
-	MAIL_SENDER = 'Socialite Team <delita.makanda@gmail.com>'
+	MAIL_SENDER = 'Socialite Team <socialite.app.team@gmail.com>'
 	ADMIN = ['delita.makanda@gmail.com']
 	POSTS_PER_PAGE = 10
 	FOLLOWERS_PER_PAGE = 20
