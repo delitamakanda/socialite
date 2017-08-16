@@ -11,7 +11,6 @@ from ..models import User, Role, Permission, Post, Follow, Comment
 from flask import current_app
 from ..decorators import admin_required, permission_required
 from app import pages, mail
-from . import cache
 
 @main.after_app_request
 def after_app_request(response):
