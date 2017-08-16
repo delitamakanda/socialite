@@ -32,7 +32,7 @@ def server_shutdown():
     return 'Shutting down...'
 
 
-
+@cache.cached(timeout=50)
 @main.route('/', methods=['GET', 'POST'])
 def index():
     form = PostForm()
