@@ -18,6 +18,7 @@
                 <div class="permalink">
                     {% if current_user == post.author %}
                     <a href="{{ url_for('.edit', id=post.id) }}" class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">edit</i></a>
+                    <a href="{{ url_for('.delete', id=post.id) }}" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
 
                     {% elif current_user.is_administrator() %}
                     <a href="{{ url_for('.edit', id=post.id) }}">Edit as Admin</a> |
