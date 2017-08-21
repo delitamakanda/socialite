@@ -152,6 +152,13 @@ def edit(id):
     return render_template('edit_post.html', form=form)
 
 
+
+@main.route('/delete/<int:id>', methods=['GET', 'POST'])
+@login_required
+def delete(id):
+    pass
+
+
 @main.route('/follow/<username>')
 @login_required
 @permission_required(Permission.FOLLOW)
