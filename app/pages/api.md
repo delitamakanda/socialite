@@ -2,7 +2,7 @@ title: API developer docs
 date: 2017-07-11
 tags: [dev, api, doc]
 
-For future projects i prepare some api endpoint for Socialite app.
+For future projects I prepared some api endpoints for Socialite app.
 
 Please feel free to contact us for more documentation.
 
@@ -10,39 +10,39 @@ Please feel free to contact us for more documentation.
 
 GET all posts
 ```
-http://127.0.0.1:5000/api/v1.0/posts/
+https://the-socialite-app.herokuapp.com/api/v1.0/posts/
 ```
 
 GET one post
 ```
-http://127.0.0.1:5000/api/v1.0/posts/<id>
+https://the-socialite-app.herokuapp.com/api/v1.0/posts/<id>
 ```
 
 POST one post
 ```
-http://127.0.0.1:5000/api/v1.0/posts/
+https://the-socialite-app.herokuapp.com/api/v1.0/posts/
 ```
 
 PUT one post
 ```
-http://127.0.0.1:5000/api/v1.0/posts/<id>
+https://the-socialite-app.herokuapp.com/api/v1.0/posts/<id>
 ```
 
 ##### Comments
 
 GET all comments
 ```
-http://127.0.0.1:5000/api/v1.0/comments/
+https://the-socialite-app.herokuapp.com/api/v1.0/comments/
 ```
 
 GET one comment
 ```
-http://127.0.0.1:5000/api/v1.0/comments/<id>
+https://the-socialite-app.herokuapp.com/api/v1.0/comments/<id>
 ```
 
 GET comment(s) by post
 ```
-http://127.0.0.1:5000/api/v1.0/posts/<id>/comments/
+https://the-socialite-app.herokuapp.com/api/v1.0/posts/<id>/comments/
 ```
 
 POST comment by post
