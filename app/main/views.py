@@ -10,7 +10,7 @@ from ..models import User, Role, Permission, Post, Follow, Comment
 from flask import current_app
 from ..decorators import admin_required, permission_required
 from app import pages, mail
-from .. import cache, ext
+from .. import cache
 
 @main.after_app_request
 def after_app_request(response):
@@ -52,10 +52,7 @@ def index():
     posts = pagination.items
     return render_template('index.html', form=form, posts=posts, pagination=pagination, show_followed=show_followed)
 
-@ext.register_generator
-def index():
-    yield 'main.index', {}
-    
+
 
 @main.route('/all')
 @login_required
@@ -275,8 +272,24 @@ def moderate_disable(id):
 def page(path):
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
-    #return pages.get_or_404(path).html
 
+
+@main.route('/sitemap.xml', methods=['GET'])
+def sitemap():
+    pages=[]
+    ten_days_ago=datetime.now() - timedelta(days=10).date().isoformat()
+    
+    for rule in current_app.url_map.iter_rules():
+        if "GET" in rule.methods and len(rule.arguments)==0:
+            pages.append(
+                [rule.rule,ten_days_ago]
+            )
+
+    sitemap_xml = render_template('sitemap_template.xml', pages=pages)
+    response= make_response(sitemap_xml)
+    response.headers["Content-Type"] = "application/xml"
+    
+    return response
 
 #@main.route('/admin')
 #@login_required
