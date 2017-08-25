@@ -8,6 +8,7 @@ from flask.ext.pagedown import PageDown
 from flask.ext.flatpages import FlatPages
 from flask.ext.cache import Cache
 from flask_sitemap import Sitemap
+from flask_sockets import Sockets
 from config import config
 
 mail = Mail()
@@ -17,6 +18,7 @@ pages = FlatPages()
 db = SQLAlchemy()
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 ext = Sitemap()
+sockets = Sockets()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
@@ -38,6 +40,7 @@ def create_app(config_name):
     pages.init_app(app)
     cache.init_app(app)
     ext.init_app(app)
+    sockets.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
 
