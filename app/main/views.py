@@ -54,7 +54,7 @@ def index():
 
 @ext.register_generator
 def index():
-    yield 'index', {}
+    yield 'main.index', {}
     
 
 @main.route('/all')
