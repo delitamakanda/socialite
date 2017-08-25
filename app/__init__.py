@@ -41,6 +41,7 @@ def create_app(config_name):
     cache.init_app(app)
     ext.init_app(app)
     sockets.init_app(app)
+    redis = redis.from_url(app.config['REDIS_URL'])
     db.init_app(app)
     login_manager.init_app(app)
 
