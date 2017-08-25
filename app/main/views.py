@@ -282,7 +282,14 @@ def sitemap():
     for rule in current_app.url_map.iter_rules():
         if "GET" in rule.methods and len(rule.arguments)==0:
             pages.append([rule.rule,ten_days_ago])
-
+            
+            
+    posts = Post.query.order_by(Post.timestamp).all()
+    for post in posts:
+        url = url_for('main.index')
+        timestamp = post.timestamp.date().isoformat()
+        pages.append([url, timestamp]) 
+        
     sitemap_xml = render_template('sitemap_template.xml', pages=pages)
     response = make_response(sitemap_xml)
     response.headers["Content-Type"] = "application/xml"
