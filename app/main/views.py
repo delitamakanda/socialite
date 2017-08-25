@@ -2,7 +2,6 @@ from datetime import datetime
 from flask import render_template, session, redirect, url_for, request, abort, flash, make_response
 from flask.ext.sqlalchemy import get_debug_queries
 from flask.ext.mail import Message
-#from ..email import send_email
 from flask.ext.login import login_user, logout_user, login_required, current_user
 from . import main
 from .forms import PostForm, EditProfileForm, EditProfileAdminForm, CommentForm, ContactForm
@@ -11,7 +10,7 @@ from ..models import User, Role, Permission, Post, Follow, Comment
 from flask import current_app
 from ..decorators import admin_required, permission_required
 from app import pages, mail
-from .. import cache
+from .. import cache, ext
 
 @main.after_app_request
 def after_app_request(response):
@@ -52,6 +51,11 @@ def index():
     pagination = query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False)
     posts = pagination.items
     return render_template('index.html', form=form, posts=posts, pagination=pagination, show_followed=show_followed)
+
+@ext.register_generator
+def index():
+    yield 'index', {}
+    
 
 @main.route('/all')
 @login_required
