@@ -33,8 +33,8 @@ class DevelopmentConfig(Config):
 	"""docstring for DevelopmentConfig."""
 	DEBUG = True
 	FLATPAGES_AUTO_RELOAD = DEBUG
-	MAIL_SERVER = 'smtp.mailgun.org'
-	MAIL_PORT = 587
+	MAIL_SERVER = os.environ.get('SMTP_SERVER')
+	MAIL_PORT = os.environ.get('SMTP_PORT')
 	MAIL_USE_TLS = True
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
@@ -53,6 +53,8 @@ class ProductionConfig(Config):
 		Config.init_app(app)
 
 		import logging
+		import redis
+		import gevent
 		from logging.handlers import SMTPHandler
 		credentials = None
 		secure = None
