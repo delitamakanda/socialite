@@ -22,7 +22,7 @@ class Config:
 	FLATPAGES_EXTENSION = '.md'
 	FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'headerid']
 	ADMINS = ['delita.makanda@gmail.com', 'makanda.delita@orange.fr']
-	SITEMAP_MAX_URL_COUNT = 10 
+	# SITEMAP_MAX_URL_COUNT = 10 
 
 
 	@staticmethod
