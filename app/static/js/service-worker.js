@@ -1,8 +1,8 @@
 var cacheName = 'socialite-v1';
 var filesToCache = [
   '/index.html',
-  '/css/app.css',
-  '/js/app.js',
+  //'/css/app.css',
+  //'/js/app.js',
   /* ...and other assets (jQuery, Materialize, fonts, etc) */
 ];
 
@@ -75,8 +75,3 @@ fetch(app.apiURL)
 }).catch(function(err) {
   // Error
 });
-
-
-
-
-
