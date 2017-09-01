@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import render_template, session, redirect, url_for, request, abort, flash, make_response
+from flask import render_template, session, redirect, url_for, request, abort, flash, make_response, current_app
 from flask.ext.sqlalchemy import get_debug_queries
 from flask.ext.mail import Message
 from flask.ext.login import login_user, logout_user, login_required, current_user
@@ -7,7 +7,6 @@ from . import main
 from .forms import PostForm, EditProfileForm, EditProfileAdminForm, CommentForm, ContactForm
 from .. import db
 from ..models import User, Role, Permission, Post, Follow, Comment
-from flask import current_app
 from ..decorators import admin_required, permission_required
 from app import pages, mail
 from .. import cache
@@ -229,7 +228,7 @@ def moderate():
 @main.route('/contact/', methods=['GET', 'POST'])
 def contact_us():
     form = ContactForm()
-    
+
     if request.method == 'POST':
         if form.validate() == False:
             flash("All fields are required.")
@@ -241,9 +240,9 @@ def contact_us():
             %s
             """ % (form.name.data, form.email.data, form.message.data)
             mail.send(msg)
-            
+
             return render_template('contact.html', success=True, form=form)
-            
+
     elif request.method == 'GET':
         return render_template('contact.html', form=form)
 
@@ -278,22 +277,21 @@ def page(path):
 def sitemap():
     pages=[]
     ten_days_ago=datetime.now() - timedelta(days=10).date().isoformat()
-    
-    for rule in current_app.url_map.iter_rules():
+
+    for rule in app.url_map.iter_rules():
         if "GET" in rule.methods and len(rule.arguments)==0:
-            pages.append([rule.rule,ten_days_ago])
-            
-            
-    posts = Post.query.order_by(Post.timestamp).all()
+            pages.append([rule.rule, rule.ten_days_ago])
+
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
     for post in posts:
-        url = url_for('main.index')
+        url = url_for('main.post', id=post.id)
         timestamp = post.timestamp.date().isoformat()
-        pages.append([url, timestamp]) 
-        
+        pages.append([url, timestamp])
+
     sitemap_xml = render_template('sitemap_template.xml', pages=pages)
     response = make_response(sitemap_xml)
     response.headers["Content-Type"] = "application/xml"
-    
+
     return response
 
 #@main.route('/admin')

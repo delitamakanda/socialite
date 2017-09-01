@@ -19,7 +19,7 @@ db = SQLAlchemy()
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 ext = Sitemap()
 sockets = Sockets()
-redis = redis.from_url(app.config['REDIS_URL'])
+#redis = redis.from_url(app.config['REDIS_URL'])
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
@@ -45,12 +45,14 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
 
-    from main import main as main_blueprint
+    from .main import main as main_blueprint
     from .auth import auth as auth_blueprint
+    from .pwa import pwa as pwa_blueprint
     from .api_1_0 import api as api_1_0_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
     app.register_blueprint(main_blueprint)
     app.register_blueprint(api_1_0_blueprint, url_prefix='/api/v1.0')
+    app.register_blueprint(pwa_blueprint, url_prefix='/pwa')
 
     root_js = Bundle(
         'js/lib/jquery-2.1.1.min.js',

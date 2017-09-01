@@ -1,11 +1,10 @@
-from flask import render_template, session, redirect, request, url_for, flash
+from flask import render_template, session, redirect, request, url_for, flash, current_app
 from flask.ext.login import login_user, logout_user, login_required, current_user
 from . import auth
 from ..models import User, Role, Permission
 from ..decorators import admin_required, permission_required
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm, PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
 from ..email import send_email
-from flask import current_app
 from .. import db
 
 @auth.before_app_request
@@ -77,8 +76,8 @@ def resend_confirmation():
     send_email(current_user.email, ' Confirm your account', 'auth/email/confirm', user=current_user, token=token)
     flash('A new confirmation email has been sent to you by email.')
     return redirect(url_for('main.index'))
-    
-    
+
+
 @auth.route('/change-password', methods=['GET', 'POST'])
 @login_required
 def change_password():
@@ -157,6 +156,3 @@ def change_email(token):
     else:
         flash('Invalid request.')
     return redirect(url_for('main.index'))
-    
-    
-
