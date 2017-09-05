@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import timedelta, datetime, tzinfo, date, time
 from flask import render_template, session, redirect, url_for, request, abort, flash, make_response, current_app
 from flask.ext.sqlalchemy import get_debug_queries
 from flask.ext.mail import Message
@@ -276,11 +276,11 @@ def page(path):
 @main.route('/sitemap.xml', methods=['GET'])
 def sitemap():
     pages=[]
-    ten_days_ago=datetime.now() - timedelta(days=10).date().isoformat()
+    ten_days_ago= datetime.now() #- timedelta(days=10).date().isoformat()
 
     for rule in app.url_map.iter_rules():
         if "GET" in rule.methods and len(rule.arguments)==0:
-            pages.append([rule.rule, rule.ten_days_ago])
+            pages.append([rule.rule, ten_days_ago])
 
     posts = Post.query.order_by(Post.timestamp.desc()).all()
     for post in posts:
@@ -288,7 +288,7 @@ def sitemap():
         timestamp = post.timestamp.date().isoformat()
         pages.append([url, timestamp])
 
-    sitemap_xml = render_template('sitemap_template.xml', pages=pages)
+    sitemap_xml = render_template('sitemap.xml', pages=pages)
     response = make_response(sitemap_xml)
     response.headers["Content-Type"] = "application/xml"
 
