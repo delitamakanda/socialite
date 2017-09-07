@@ -25,5 +25,4 @@ flask-sslify==0.1.4
 Flask-FlatPages==0.6
 Flask-Sitemap
 Flask-Cache
-Flask-Sockets
-redis
+flask-socketio
