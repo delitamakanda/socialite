@@ -23,9 +23,6 @@ class Config:
 	FLATPAGES_EXTENSION = '.md'
 	FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'headerid']
 	ADMINS = ['delita.makanda@gmail.com', 'makanda.delita@orange.fr']
-	REDIS_URL = os.environ.get('REDIS_URL')
-	REDIS_CHAN = 'chat'
-
 
 	@staticmethod
 	def init_app(app):
@@ -55,8 +52,6 @@ class ProductionConfig(Config):
 		Config.init_app(app)
 
 		import logging
-		import redis
-		import gevent
 		from logging.handlers import SMTPHandler
 		credentials = None
 		secure = None
