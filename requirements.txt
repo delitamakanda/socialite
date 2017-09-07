@@ -28,5 +28,4 @@ Flask-FlatPages==0.6
 Flask-Assets
 Flask-Sitemap
 Flask-Cache
-Flask-Sockets
-redis
+flask-socketio
