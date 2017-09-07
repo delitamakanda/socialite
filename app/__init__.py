@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_assets import Bundle, Environment
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, emit
 from flask.ext.mail import Mail
 from flask.ext.login import LoginManager
 from flask.ext.moment import Moment
