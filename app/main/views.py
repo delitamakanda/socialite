@@ -294,6 +294,11 @@ def sitemap():
 
     return response
 
+@main.route('/chat')
+@login_required
+def chat():
+    pass
+
 #@main.route('/admin')
 #@login_required
 #@admin_required
