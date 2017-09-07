@@ -47,22 +47,22 @@ https://the-socialite-app.herokuapp.com/api/v1.0/posts/<id>/comments/
 
 POST comment by post
 ```
-http://127.0.0.1:5000/api/v1.0/posts/<id>/comments/
+https://the-socialite-app.herokuapp.com/api/v1.0/posts/<id>/comments/
 ```
 
 
 ##### Users
 GET one user
 ```
-http://127.0.0.1:5000/api/v1.0/users/2
+https://the-socialite-app.herokuapp.com/api/v1.0/users/2
 ```
 
 GET posts by user
 ```
-http://127.0.0.1:5000/api/v1.0/users/<id>/posts/
+https://the-socialite-app.herokuapp.com/api/v1.0/users/<id>/posts/
 ```
 
 GET user by followed posts
 ```
-http://127.0.0.1:5000/api/v1.0/users/<id>/timeline/
+https://the-socialite-app.herokuapp.com/api/v1.0/users/<id>/timeline/
 ```
