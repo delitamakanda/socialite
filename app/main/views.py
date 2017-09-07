@@ -156,7 +156,17 @@ def edit(id):
 @main.route('/delete/<int:id>', methods=['GET', 'POST'])
 @login_required
 def delete(id):
-    pass
+    post = Post.query.get_or_404(id)
+    if current_user != post.author and not current_user.can(Permission.ADMINISTER):
+        abort(403)
+    if request.method == "POST":
+        db.session.delete(post)
+        db.session.commit()
+        flash("Deleted '{}'".format(post.body))
+        return redirect(url_for('.user', username=current_user.username))
+    else:
+        flash("Please confirm deleting the post.")
+    return render_template('confirm_delete.html', post=post, nolinks=True)
 
 
 @main.route('/follow/<username>')
