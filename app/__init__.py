@@ -9,7 +9,6 @@ from flask.ext.pagedown import PageDown
 from flask.ext.flatpages import FlatPages
 from flask.ext.cache import Cache
 from flask_sitemap import Sitemap
-from flask_sockets import Sockets
 from config import config
 
 mail = Mail()
