@@ -1,6 +1,6 @@
-title: API developer docs
+title: REST API developer docs
 date: 2017-07-11
-tags: [dev, api, doc]
+tags: [dev, api, doc, rest]
 
 For future projects I prepared some api endpoints for Socialite app.
 
