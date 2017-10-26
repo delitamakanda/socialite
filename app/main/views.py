@@ -283,40 +283,19 @@ def page(path):
     return render_template('page.html', page=page)
 
 
-@main.route('/sitemap.xml', methods=['GET'])
-def sitemap():
-    pages=[]
-    ten_days_ago= datetime.now() #- timedelta(days=10).date().isoformat()
-
-    for rule in app.url_map.iter_rules():
-        if "GET" in rule.methods and len(rule.arguments)==0:
-            pages.append([rule.rule, ten_days_ago])
-
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    for post in posts:
-        url = url_for('main.post', id=post.id)
-        timestamp = post.timestamp.date().isoformat()
-        pages.append([url, timestamp])
-
-    sitemap_xml = render_template('sitemap.xml', pages=pages)
-    response = make_response(sitemap_xml)
-    response.headers["Content-Type"] = "application/xml"
-
-    return response
-
 @main.route('/chat')
 @login_required
 def chat():
     pass
 
-#@main.route('/admin')
-#@login_required
-#@admin_required
-#def for_admin_only():
-    #return "for admins!"
+@main.route('/admin')
+@login_required
+@admin_required
+def for_admin_only():
+    return "for admins!"
 
-#@main.route('/moderator')
-#@login_required
-#@permission_required(Permission.MODERATE_COMMENTS)
-#def for_moderators_only():
-    #return "for moderators !"
+@main.route('/moderator')
+@login_required
+@permission_required(Permission.MODERATE_COMMENTS)
+def for_moderators_only():
+    return "for moderators !"
