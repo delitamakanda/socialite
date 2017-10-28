@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from flask_assets import Bundle, Environment
-from flask_socketio import SocketIO, emit
 from flask.ext.mail import Mail
 from flask.ext.login import LoginManager
 from flask.ext.moment import Moment
@@ -18,7 +17,6 @@ pages = FlatPages()
 db = SQLAlchemy()
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 ext = Sitemap()
-socketio = SocketIO()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
@@ -40,7 +38,6 @@ def create_app(config_name):
     pages.init_app(app)
     cache.init_app(app)
     ext.init_app(app)
-    socketio.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
 
