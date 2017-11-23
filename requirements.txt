@@ -27,3 +27,4 @@ SQLAlchemy==1.1.5
 Flask-FlatPages==0.6
 Flask-Assets
 graphene-sqlalchemy>=2.0
+Flask-Cache
