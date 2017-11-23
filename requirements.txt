@@ -26,6 +26,4 @@ flask-httpauth==3.2.2
 SQLAlchemy==1.1.5
 Flask-FlatPages==0.6
 Flask-Assets
-Flask-Sitemap
-Flask-Cache
-flask-socketio
+graphene-sqlalchemy>=2.0
