@@ -1,10 +1,25 @@
 title: GraphQL API developer docs
-date: 2017-09-27
+date: 2018-05-11
 tags: [dev, api, doc, graphql]
 
-## SOON
+## Posts
 
-## Resources GraphQL
-[GraphQL](https://tutorialzine.com/2017/10/getting-started-with-graphql)
+```
+/api/v2.0/posts
+```
 
-
+```graphql
+query {
+  allPosts{
+    edges{
+      node{
+        id,
+        body,
+        timestamp,
+        authorId,
+        bodyHtml
+      }
+    }
+  }
+}
+```
