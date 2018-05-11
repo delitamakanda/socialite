@@ -8,7 +8,7 @@ tags: [dev, api, doc, graphql]
 /api/v2.0/posts
 ```
 
-```graphql
+```
 query {
   allPosts{
     edges{

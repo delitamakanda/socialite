@@ -18,6 +18,7 @@ class Post(SQLAlchemyObjectType):
 class Query(graphene.ObjectType):
     node = relay.Node.Field()
     all_posts = SQLAlchemyConnectionField(Post)
+    post = graphene.Field(Post)
 
 
 schema = graphene.Schema(query=Query, types=[Post])
