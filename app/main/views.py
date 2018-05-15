@@ -1,5 +1,5 @@
 from datetime import timedelta, datetime, tzinfo, date, time
-from flask import render_template, session, redirect, url_for, request, abort, flash, make_response, current_app
+from flask import render_template, session, redirect, url_for, request, abort, flash, make_response, current_app, g
 from flask.ext.sqlalchemy import get_debug_queries
 from flask.ext.mail import Message
 from flask.ext.login import login_user, logout_user, login_required, current_user
@@ -183,7 +183,7 @@ def follow(username):
         return redirect(url_for('.user', username=username))
     current_user.follow(user)
     flash('You are now following %s.' % username)
-    follower_notification(user, current_user)
+    follower_notification(user, g.user)
     return redirect(url_for('.user', username=username))
 
 
