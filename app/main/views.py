@@ -183,7 +183,7 @@ def follow(username):
         return redirect(url_for('.user', username=username))
     current_user.follow(user)
     flash('You are now following %s.' % username)
-    follower_notification(current_user, user)
+    follower_notification(user, g.user)
     return redirect(url_for('.user', username=username))
 
 
