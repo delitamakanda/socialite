@@ -10,6 +10,7 @@ from ..models import User, Role, Permission, Post, Follow, Comment
 from ..decorators import admin_required, permission_required
 from app import pages, mail
 from .. import cache
+from .emails import follower_notification
 
 @main.after_app_request
 def after_request(response):
@@ -182,6 +183,7 @@ def follow(username):
         return redirect(url_for('.user', username=username))
     current_user.follow(user)
     flash('You are now following %s.' % username)
+    follower_notification(current_user, user)
     return redirect(url_for('.user', username=username))
 
 
