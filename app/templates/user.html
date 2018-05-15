@@ -88,14 +88,18 @@
                     {% if current_user.is_administrator() and user == current_user %}
                     <li><a href="{{ url_for('.edit_profile_admin', id=user.id) }}">Edit profile [Admin]</a></li>
                     {% endif %}
-
+                    
+                     {% if user == current_user and not current_user.is_administrator()  %}
                     <li>
                         <a href="{{ url_for('auth.change_password') }}">Change Password</a>
                     </li>
-
+                     {% endif %}
+                    
+                     {% if user == current_user and not current_user.is_administrator()  %}
                     <li>
                         <a href="{{ url_for('auth.change_email_request') }}">Change Email</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
