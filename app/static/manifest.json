@@ -1,11 +1,57 @@
 {
   "name": "Socialite",
   "short_name": "Socialite",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "orientation": "portrait",
-  "Scope": "/",
+  "description": "The platform who connect people",
+  "icons": [
+    {
+      "src": "images/icons/app-icon-48x48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "images/icons/app-icon-96x96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "images/icons/app-icon-144x144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "images/icons/app-icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/icons/app-icon-256x256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "images/icons/app-icon-384x384.png",
+      "type": "image/png",
+      "sizes": "384x384"
+    },
+    {
+      "src": "images/icons/app-icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+   ],
   "start_url": "/",
-  "splash_pages": null
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#3E4EB8",
+  "theme_color": "#2F3BA2",
+  "dir": "ltr",
+  "lang": "en-US",
+  "gcm_sender_id": "",
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "",
+      "id":""
+    }]
 }
