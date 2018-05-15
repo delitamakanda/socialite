@@ -10,7 +10,7 @@ from ..models import User, Role, Permission, Post, Follow, Comment
 from ..decorators import admin_required, permission_required
 from app import pages, mail
 from .. import cache
-from ..emails import follower_notification
+from ..email import follower_notification
 
 @main.after_app_request
 def after_request(response):
