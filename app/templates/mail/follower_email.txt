@@ -1,8 +1,8 @@
-Dear {{ user.nickname }},
+Dear {{ user.username }},
 
-{{ follower.nickname }} is now a follower. Click on the following link to visit {{ follower.nickname }}'s profile page:
+{{ user.username }} is now a follower. Click on the following link to visit {{ user.username }}'s profile page:
 
-{{ url_for('user', nickname=follower.nickname, _external=True) }}
+{{ url_for('main.user', username=user.username, _external=True) }}
 
 Regards,
 

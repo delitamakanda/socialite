@@ -1,5 +1,5 @@
 from datetime import timedelta, datetime, tzinfo, date, time
-from flask import render_template, session, redirect, url_for, request, abort, flash, make_response, current_app, g
+from flask import render_template, session, redirect, url_for, request, abort, flash, make_response, current_app
 from flask.ext.sqlalchemy import get_debug_queries
 from flask.ext.mail import Message
 from flask.ext.login import login_user, logout_user, login_required, current_user
@@ -10,7 +10,7 @@ from ..models import User, Role, Permission, Post, Follow, Comment
 from ..decorators import admin_required, permission_required
 from app import pages, mail
 from .. import cache
-from ..email import follower_notification
+from ..email import send_email
 
 @main.after_app_request
 def after_request(response):
@@ -183,7 +183,10 @@ def follow(username):
         return redirect(url_for('.user', username=username))
     current_user.follow(user)
     flash('You are now following %s.' % username)
-    follower_notification(user, g.user)
+    # follower_notification(u, current_user)
+    send_email(user.email, 'Socialite %s is now following you!' % current_user.username,
+               'mail/follower_email',
+               user=user)
     return redirect(url_for('.user', username=username))
 
 
@@ -284,11 +287,6 @@ def page(path):
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
-
-@main.route('/chat')
-@login_required
-def chat():
-    pass
 
 @main.route('/admin')
 @login_required
