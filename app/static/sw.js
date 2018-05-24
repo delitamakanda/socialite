@@ -3,9 +3,6 @@ self.addEventListener('install', function(e) {
         caches.open('socialite').then(function(cache) {
             return cache.addAll([
                 '/',
-                '/manifest.json',
-                '/css/app.css',
-                '/js/app.js',
             ]);
         })
     );
