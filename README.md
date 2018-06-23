@@ -1,8 +1,6 @@
-# socialite app
+# socialite app [![Build Status](https://travis-ci.org/delitamakanda/socialite.svg?branch=master)](https://travis-ci.org/delitamakanda/socialite)
 
 *work in progress*
-
-[![CircleCI](https://circleci.com/gh/delitamakanda/socialite/tree/master.svg?style=svg)](https://circleci.com/gh/delitamakanda/socialite/tree/master)
 
 ## commands
 
@@ -29,7 +27,3 @@ http --json --auth <email>:<password> POST http://127.0.0.1:5000/api/v1.0/posts/
 http --json --auth : GET http://127.0.0.1:5000/api/v1.0/users/34/timeline/
 http --auth <email>:<password> --json GET http://127.0.0.1:5000/api/v1.0/token
 ```
-
-## flask flat pages
-Manage static pages with Flask
-[flat pages](https://pythonhosted.org/Flask-FlatPages/)
