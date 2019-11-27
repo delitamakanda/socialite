@@ -1,4 +1,4 @@
-Flask==1.0
+Flask==1.1.1
 Flask-Mail==0.9.0
 Flask-Migrate==1.1.0
 Flask-Moment==0.5.1
