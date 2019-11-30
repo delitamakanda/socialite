@@ -6,7 +6,7 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_pagedown import PageDown
 from flask_flatpages import FlatPages
-from flask_cache import Cache
+from flask_caching import Cache
 from flask_sitemap import Sitemap
 from config import config
 
