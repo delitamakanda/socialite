@@ -7,8 +7,8 @@ if os.environ.get('COVERAGE'):
     COV.start()
 from app import create_app, db
 from app.models import User, Role, Post, Permission, Follow, Comment
-from flask.ext.script import Manager, Shell
-from flask.ext.migrate import Migrate, MigrateCommand
+from flask_script import Manager, Shell
+from flask_migrate import Migrate, MigrateCommand
 
 app = create_app(os.getenv('CONFIG') or 'default')
 manager = Manager(app)

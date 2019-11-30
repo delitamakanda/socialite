@@ -1,8 +1,8 @@
 from datetime import timedelta, datetime, tzinfo, date, time
 from flask import render_template, session, redirect, url_for, request, abort, flash, make_response, current_app
-from flask.ext.sqlalchemy import get_debug_queries
-from flask.ext.mail import Message
-from flask.ext.login import login_user, logout_user, login_required, current_user
+from flask_sqlalchemy import get_debug_queries
+from flask_mail import Message
+from flask_login import login_user, logout_user, login_required, current_user
 from . import main
 from .forms import PostForm, EditProfileForm, EditProfileAdminForm, CommentForm, ContactForm
 from .. import db

@@ -1,12 +1,12 @@
 from flask import Flask, render_template
 from flask_assets import Bundle, Environment
-from flask.ext.mail import Mail
-from flask.ext.login import LoginManager
-from flask.ext.moment import Moment
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.pagedown import PageDown
-from flask.ext.flatpages import FlatPages
-from flask.ext.cache import Cache
+from flask_mail import Mail
+from flask_login import LoginManager
+from flask_moment import Moment
+from flask_sqlalchemy import SQLAlchemy
+from flask_pagedown import PageDown
+from flask_flatpages import FlatPages
+from flask_cache import Cache
 from flask_sitemap import Sitemap
 from config import config
 
@@ -29,7 +29,7 @@ def create_app(config_name):
     config[config_name].init_app(app)
 
     if not app.debug and not app.testing and not app.config['SSL_DISABLE']:
-        from flask.ext.sslify import SSLify
+        from flask_sslify import SSLify
         sslify = SSLify(app)
 
     mail.init_app(app)
