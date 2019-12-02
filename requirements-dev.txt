@@ -31,3 +31,4 @@ Flask-Sitemap
 Flask-GraphQL==1.4.1
 graphene[sqlalchemy]
 selenium
+python-dotenv==0.10.3

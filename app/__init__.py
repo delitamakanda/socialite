@@ -52,16 +52,11 @@ def create_app(config_name):
 
     root_js = Bundle(
         'js/vendors/jquery-2.1.1.min.js',
-        #'js/vendors/materialize.min.js',
         'js/app.js',
-        'js/init.js',
         output='dist/bundle.js')
 
     root_css = Bundle(
-        'css/vendors/reset.css',
-        'css/vendors/materialize.min.css',
-        'css/style.css',
-        'css/common.css',
+        'css/vendors/tailwind.min.css',
         'css/app.css',
         output='dist/styles.css')
 

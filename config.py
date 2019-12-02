@@ -7,7 +7,7 @@ class Config:
 	MAIL_SUBJECT_PREFIX = 'socialite app'
 	MAIL_SENDER = 'Socialite Team <socialite.app.team@gmail.com>'
 	ADMIN = ['delita.makanda@gmail.com']
-	POSTS_PER_PAGE = 10
+	POSTS_PER_PAGE = 25
 	FOLLOWERS_PER_PAGE = 20
 	COMMENTS_PER_PAGE = 10
 	SLOW_DB_QUERY_TIME = 0.5
