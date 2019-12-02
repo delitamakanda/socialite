@@ -13,7 +13,7 @@
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,600" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
@@ -24,30 +24,27 @@
     <meta name="mobile-web-app-capable" content="yes">
     {% endblock %}
 </head>
-<body>
-<div>
+<body class="bg-gray-200 h-screen font-sans">
+
+<main>
+    <div>
 
 
-    <main>
-        <div>
-
-
-            {% for message in get_flashed_messages() %}
-            <div class="container">
-                <div class="alert">
-                    <a href="#" class="close-btn">×</a>
-                    {{ message }}
-                </div>
+        {% for message in get_flashed_messages() %}
+        <div class="container">
+            <div class="alert">
+                <a href="#" class="close-btn">×</a>
+                {{ message }}
             </div>
-            {% endfor %}
-
-            {% block content %}
-            {% endblock %}
-
-
         </div>
-    </main>
-</div>
+        {% endfor %}
+
+        {% block content %}
+        {% endblock %}
+
+
+    </div>
+</main>
 
 
 {% block scripts %}

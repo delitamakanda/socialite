@@ -7,70 +7,66 @@
 {% endblock %}
 
 
-
-
 {% block content %}
 {{ super() }}
 
 
-<section class="container">
+<section class="container mx-auto h-full flex justify-center items-center">
 
-    <div class="row">
+    <div class="lg:w-1/3 w-full">
+        <h1 class="font-hairline mb-6 text-center">Create a personnal account</h1>
 
-        <div class="col s12">
-
-            <div class="card-panel light-grey">
-
-                <h4>Create a personnal account</h4>
-
-                <p>Your safety is our priorities.</p>
-
+            <div class="border-teal-600 p-8 border-t-12 bg-white mb-6 rounded-lg shadow-lg">
+                
                 <form method="post" name="register">
                     {{form.hidden_tag()}}
 
-                    <div class="input-field">
-                        {{form.email(class_="validate")}}
-                        <label for="email">Email</label>
+                    <div class="mb-4">
+                        <label for="email" class="validate font-bold text-gray-600 block mb-2">Email</label>
+                        {{form.email(class_="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow")}}
                     </div>
 
                     {% for error in form.errors.email %}
-                    <p style="color: red;">{{error}}</p>
+                    <p class="text-red-600">{{error}}</p>
                     {% endfor %}
 
-                    <div class="input-field">
-                        {{form.username(class_="validate")}}
-                        <label for="username">Username</label>
+                    <div class="mb-4">
+                        <label for="username" class="validate font-bold text-gray-600 block mb-2">Username</label>
+                        {{form.username(class_="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow")}}
                     </div>
 
                     {% for error in form.errors.username %}
-                    <p style="color: red;">{{error}}</p>
+                    <p class="text-red-600">{{error}}</p>
                     {% endfor %}
 
-                    <div class="input-field">
-                        {{form.password(class_="validate")}}
-                        <label for="password">Password</label>
+                    <div class="mb-4">
+                        <label for="password" class="validate font-bold text-gray-600 block mb-2">Password</label>
+                        {{form.password(class_="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow")}}
                     </div>
 
                     {% for error in form.errors.password %}
-                    <p style="color: red;">{{error}}</p>
+                    <p class="text-red-600">{{error}}</p>
                     {% endfor %}
 
 
-                    <div class="input-field">
-                        {{form.password2(class_="validate")}}
-                        <label for="password2">Password confirmation</label>
+                    <div class="mb-4">
+                        <label for="password2" class="validate font-bold text-gray-600 block mb-2">Password confirmation</label>
+                        {{form.password2(class_="block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow")}}
                     </div>
 
                     {% for error in form.errors.password2 %}
-                    <p style="color: red;">{{error}}</p>
+                    <p class="text-red-600">{{error}}</p>
                     {% endfor %}
 
-                    <div class="input-field">
-                        <button type="submit" class="waves-effect waves-light btn">Register</button>
+                    <div class="mb-4">
+                        <button type="submit" class="bg-teal-600 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded">Register</button>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-gray-600 text-sm">Already an account? <a href="{{ url_for('auth.login') }}" class="no-underline text-gray-600 font-bold hover:text-teal-800">Log In</a>.</p>
                     </div>
                 </form>
             </div>
-        </div>
     </div>
 </section>
 

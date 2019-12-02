@@ -1,46 +1,38 @@
-<nav class="blue lighten-1" role="navigation">
-  <div class="nav-wrapper container"><a id="logo-container" href="{{ url_for('main.index') }}" class="brand-logo">socialite</a>
-    <ul class="right hide-on-med-and-down">
-        <li><a href="{{ url_for('main.index') }}">Feed</a></li>
-      {% if current_user.is_authenticated() %}
-        <li>
-            <a href="{{ url_for('main.user', username=current_user.username) }}">
-                <img src="{{ current_user.gravatar(size=256) }}" class="demo-avatar">
-                {{ current_user.email }}
+<div class="bg-white border-b border-gray-400" role="navigation">
+    <div class="container mx-auto px-4 flex items-center py-4">
+        <nav class="w-2/5">
+            <a href="{{ url_for('main.index') }}" class="text-sm mr-4 font-semibold pb-4 text-gray-800 hover:text-teal-600 border-b-2 border-solid border-transparent hover:border-teal-600">
+                <i class="material-icons">speaker_notes</i> Feed
             </a>
-        </li>
-        <li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
-      {% else %}
-        <li>
-            <a href="{{ url_for('auth.login') }}">
-                <img src="{{ url_for('static', filename='images/user.jpg') }}" class="demo-avatar">
-                Hello, Stranger !
-            </a>
-        </li>
-        <li><a href="{{ url_for('auth.login') }}">Sign In</a></li>
-        <li><a href="{{ url_for('auth.register') }}">Sign Up</a></li>
-      {% endif %}
-    </ul>
-
-    <ul id="nav-mobile" class="side-nav">
-        {% if current_user.is_authenticated() %}
-            <li>
-                <a href="">
+        </nav>
+        <div class="w-1/5 text-center">
+            <a id="logo-container" class="text-sm mr-4 font-semibold pb-4 text-gray-800 hover:text-teal-600 border-b-2 border-solid border-transparent" href="{{ url_for('main.index') }}" class="brand-logo">socialite</a>
+        </div>
+        <div class="w-2/5 flex justify-end">
+            {% if current_user.is_authenticated() %}
+            <div>
+                <a href="{{ url_for('main.user', username=current_user.username) }}" class="text-sm mr-4 font-semibold pb-4 text-gray-800 hover:text-teal-600 border-b-2 border-solid border-transparent">
                     <img src="{{ current_user.gravatar(size=256) }}" class="demo-avatar">
-                    {{ current_user.email }} !
+                    {{ current_user.email }}
                 </a>
-            </li>
-            <li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
-        {% else %}
-            <li>
-                <a href="">
+            </div>
+            <div>
+                <a href="{{ url_for('auth.logout') }}" class="bg-teal-600 hover:bg-teal-800 text-white font-medium rounded-full py-2 px-4 ml-2">Sign Out</a>
+            </div> 
+            {% else %}
+            <div>
+                <a href="{{ url_for('auth.login') }}" class="text-sm mr-4 font-semibold pb-4 text-gray-800 hover:text-teal-600 border-b-2 border-solid border-transparent">
                     <img src="{{ url_for('static', filename='images/user.jpg') }}" class="demo-avatar">
                     Hello, Stranger !
                 </a>
-            </li>
-            <li><a href="{{ url_for('auth.login') }}">Sign In / Sign Up</a></li>
-        {% endif %}
-    </ul>
-    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-  </div>
-</nav>
+            </div>
+            <div>
+                <a href="{{ url_for('auth.login') }}" class="bg-teal-600 hover:bg-teal-800 text-white font-medium rounded-full py-2 px-4">Sign In</a>
+            </div>
+            <div>
+                <a href="{{ url_for('auth.register') }}" class="bg-teal-600 hover:bg-teal-800 text-white font-medium rounded-full py-2 px-4 ml-2">Sign Up</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

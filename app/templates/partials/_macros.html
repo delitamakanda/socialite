@@ -1,7 +1,7 @@
 {% macro pagination_widget(pagination, endpoint) %}
-<ul class="pagination">
+<ul class="pagination flex justify-center mx-4 my-4 list-reset text-white font-bold">
     <li {% if not pagination.has_prev %} class="disabled" {% endif %}>
-        <a href="{% if pagination.has_prev %}{{ url_for(endpoint, page = pagination.page - 1, **kwargs)}} {% else %} # {% endif %}">
+        <a href="{% if pagination.has_prev %}{{ url_for(endpoint, page = pagination.page - 1, **kwargs)}} {% else %} # {% endif %}" class="button bg-teal-600 hover:bg-teal-800 border border-teal-600 py-2 px-4 rounded opacity-85">
             &laquo;
         </a>
     </li>
@@ -10,20 +10,20 @@
     {% if p %}
         {% if p == pagination.page %}
         <li class="active">
-            <a href="{{ url_for(endpoint, page = p, **kwargs)}}">{{ p }}</a>
+            <a href="{{ url_for(endpoint, page = p, **kwargs)}}" class="mx-1 button bg-teal-800 border border-teal-800 hover:bg-teal-800 py-2 px-4 rounded opacity-85">{{ p }}</a>
         </li>
         {% else %}
         <li>
-            <a href="{{ url_for(endpoint, page = p, **kwargs)}}">{{ p }}</a>
+            <a href="{{ url_for(endpoint, page = p, **kwargs)}}" class="button mx-1 bg-teal-600 border border-teal-600 py-2 px-4 hover:bg-teal-800 rounded opacity-85">{{ p }}</a>
         </li>
         {% endif %}
     {% else %}
-        <li class="disabled"><a href="#">&hellip;</a></li>
+        <li class="disabled"><a href="#" class="button bg-teal-600 border border-teal-600 py-2 px-4 rounded hover:bg-teal-800 opacity-85">&hellip;</a></li>
     {% endif %}
     {% endfor %}
 
     <li {% if not pagination.has_next %} class="disabled" {% endif %}>
-        <a href="{% if pagination.has_next %}{{ url_for(endpoint, page = pagination.page + 1, **kwargs)}} {% else %} # {% endif %}">
+        <a href="{% if pagination.has_next %}{{ url_for(endpoint, page = pagination.page + 1, **kwargs)}} {% else %} # {% endif %}" class="button hover:bg-teal-800 bg-teal-600 border border-teal-600 py-2 px-4 rounded opacity-85">
             &raquo;
         </a>
     </li>
