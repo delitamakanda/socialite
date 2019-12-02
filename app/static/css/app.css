@@ -1,8 +1,7 @@
 .demo-avatar {
     border-radius: 50%;
     overflow: hidden;
-    max-width: 40px;
-    width: 100%;
-    display: inline-block;
+    width: 25px;
+    display: inline-flex;
     vertical-align: middle;
 }
