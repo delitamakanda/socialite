@@ -1,14 +1,14 @@
 <div class="bg-white border-b border-gray-400" role="navigation">
-    <div class="container mx-auto px-4 flex items-center py-4">
-        <nav class="w-2/5">
+    <div class="container mx-auto px-4 flex flex-wrap items-center py-4">
+        <nav class="lg:w-2/5 w-full">
             <a href="{{ url_for('main.index') }}" class="text-sm mr-4 font-semibold pb-4 text-gray-800 hover:text-teal-600 border-b-2 border-solid border-transparent hover:border-teal-600">
                 <i class="material-icons">speaker_notes</i> Feed
             </a>
         </nav>
-        <div class="w-1/5 text-center">
+        <div class="lg:w-1/5 w-full text-center">
             <a id="logo-container" class="text-sm mr-4 font-semibold pb-4 text-gray-800 hover:text-teal-600 border-b-2 border-solid border-transparent" href="{{ url_for('main.index') }}" class="brand-logo">socialite</a>
         </div>
-        <div class="w-2/5 flex justify-end">
+        <div class="lg:w-2/5 w-full lg:flex lg:justify-end">
             {% if current_user.is_authenticated() %}
             <div>
                 <a href="{{ url_for('main.user', username=current_user.username) }}" class="text-sm mr-4 font-semibold pb-4 text-gray-800 hover:text-teal-600 border-b-2 border-solid border-transparent">
@@ -27,10 +27,10 @@
                 </a>
             </div>
             <div>
-                <a href="{{ url_for('auth.login') }}" class="bg-teal-600 hover:bg-teal-800 text-white font-medium rounded-full py-2 px-4">Sign In</a>
+                <a href="{{ url_for('auth.login') }}" class="block bg-teal-600 hover:bg-teal-800 text-white font-medium rounded-full py-2 px-4 text-center">Sign In</a>
             </div>
             <div>
-                <a href="{{ url_for('auth.register') }}" class="bg-teal-600 hover:bg-teal-800 text-white font-medium rounded-full py-2 px-4 ml-2">Sign Up</a>
+                <a href="{{ url_for('auth.register') }}" class="block bg-teal-600 hover:bg-teal-800 text-white font-medium rounded-full py-2 px-4 lg:ml-2 mt-2 lg:mt-0 text-center">Sign Up</a>
             </div>
             {% endif %}
         </div>
