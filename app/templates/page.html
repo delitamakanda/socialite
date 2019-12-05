@@ -16,20 +16,20 @@
 
 {% block content %}
 {{ super() }}
-<section class="container">
-    <div class="row">
-        <div class="col s12">
-            <div class="card-panel light-grey">
-    <h3>{{ page.title }}</h3>
+<section class="container mx-auto px-4 py-6">
+    <div class="max-w-sm w-full lg:max-w-full lg:flex">
+        <div class="card-panel light-grey">
+            <div class="text-gray-900 font-bold text-xl mb-2">{{ page.title }}</div>
+            
+            <div class="text-gray-700 text-base">
+                {{ page.html|safe }}
+            </div>
 
-    {{ page.html|safe }}
-
-    <br><br>
-    
-    <p>Ajouté le : {{ page.date }}</p>
-</div>
-</div>
-</div>
+            <div class="flex items-center">
+                <p class="text-gray-600">Ajouté le : {{ page.date }}</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 

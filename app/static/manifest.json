@@ -39,7 +39,7 @@
       "sizes": "512x512"
     }
    ],
-  "start_url": "/",
+  "start_url": "/auth/login",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#3E4EB8",

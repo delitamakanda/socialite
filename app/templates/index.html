@@ -9,24 +9,34 @@
 
 {% block content %}
 {{ super() }}
-<div class="section no-pad-bot" id="index-banner">
-    <div class="container">
+<div class="container mx-auto px-4 pt-6" id="index-banner">
+    <div class="w-full">
+        <ul class="flex">
+            <li class="mr-3">
+                <a href="{{ url_for('.show_all') }}" {% if not show_followed %} class="inline-block border border-teal-500 rounded py-1 px-3 bg-teal-500 text-white"{% endif %} class="inline-block border border-teal-500 rounded hover:border-teal-500 text-teal-500 hover:bg-gray-200 py-1 px-3" >All</a>
+            </li>
+            <li class="mr-3">
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('.show_followed') }}" {% if show_followed %} class="inline-block border border-teal-500 rounded py-1 px-3 bg-teal-500 text-white"{% endif %} class="inline-block border border-teal-500 rounded hover:border-teal-500 text-teal-500 hover:bg-gray-200 py-1 px-3" >Followers</a>
+                {% endif %}
+            </li>            
+        </ul>
         {% if current_user.can(Permission.WRITE_ARTICLES) %}
         <div class="card">
             <form method="post" name="write_articles">
                 {{form.hidden_tag()}}
 
-                <div class="card-content">
-                    <label for="body">Whats 's on your mind ?</label>
-                    <div class="input-field col s12">
-                        {{form.body(class_="materialize-textarea")}}
+                <div class="text-right">
+                    <label for="body" class="block text-gray-700 text-sm font-bold mb-2">Whats 's on your mind ?</label>
+                    <div class="mb-4">
+                        {{form.body(class_='w-full shadow-inner p-4 border-0')}}
                     </div>
 
-                    {% for error in form.errors.body %}
-                    <p style="color: red;">{{error}}</p>
-                    {% endfor %}
+                    <button type="submit" class="bg-teal-300 hover:bg-teal-400 text-white font-bold rounded-full inline-flex items-center -mt-5"><i class="material-icons">add</i></button>
 
-                    <button type="submit" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></button>
+                    {% for error in form.errors.body %}
+                    <p class="text-red-600">{{error}}</p>
+                    {% endfor %}
                 </div>
 
             </form>
@@ -36,30 +46,15 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="section">
-
-        <div>
-            <div>
-                <div class="right-align">
-                    Filter by <a href="{{ url_for('.show_all') }}" {% if not show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab ">All</a> |
-                    {% if current_user.is_authenticated %}
-                    <a href="{{ url_for('.show_followed') }}" {% if show_followed %} class="mdl-tabs__tab is-active"{% endif %} class=" mdl-tabs__tab  ">Followers</a>
-                    {% endif %}
-                </div>
+<div class="container mx-auto px-4">
+    <div class="w-full">
+        <div class="page-content">
+            {% include 'partials/_posts.html' %}
+            {% if pagination %}
+            <div class="pagination center-align">
+                {{ macros.pagination_widget(pagination, '.index') }}
             </div>
-            <main class="mdl-layout__content">
-                <section class="mdl-layout__tab-panel is-active">
-                    <div class="page-content">
-                        {% include 'partials/_posts.html' %}
-                        {% if pagination %}
-                        <div class="pagination center-align">
-                            {{ macros.pagination_widget(pagination, '.index') }}
-                        </div>
-                        {% endif %}
-                    </div>
-                </section>
-            </main>
+            {% endif %}
         </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 {% macro pagination_widget(pagination, endpoint) %}
-<ul class="pagination flex justify-center mx-4 my-4 list-reset text-white font-bold">
+<ul class="pagination flex flex-wrap justify-center items-center mx-4 my-4 list-reset text-white font-bold">
     <li {% if not pagination.has_prev %} class="disabled" {% endif %}>
         <a href="{% if pagination.has_prev %}{{ url_for(endpoint, page = pagination.page - 1, **kwargs)}} {% else %} # {% endif %}" class="button bg-teal-600 hover:bg-teal-800 border border-teal-600 py-2 px-4 rounded opacity-85">
             &laquo;

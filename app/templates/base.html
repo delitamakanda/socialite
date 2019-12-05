@@ -32,13 +32,15 @@
     {% endblock %}
 
     <main>
-        <div class="mx-auto">
+        <div>
 
             {% for message in get_flashed_messages() %}
-            <div class="container">
-                <div class="alert">
-                    <a href="#" class="close-btn">×</a>
-                    {{ message }}
+            <div class="container mx-auto px-4">
+                <div class="bg-teal-100 border mt-4 border-teal-400 text-teal-700 px-4 py-3 rounded relative">
+                    <span class="block sm:inline">{{ message }}</span>
+                    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                        <a href="#" class="close-btn"><i class="material-icons">clear</i></a>
+                    </span>
                 </div>
             </div>
             {% endfor %}
@@ -59,7 +61,7 @@
 <script>
 if('serviceWorker' in navigator) {
   navigator.serviceWorker
-           .register('static/sw.js')
+           .register('/static/sw.js')
            .then(function() { console.log("Service Worker Registered"); });
 }
 </script>

@@ -17,73 +17,66 @@
 {% block content %}
 {{ super() }}
 
-<section class="container">
-    <div class="row">
-        <div class="col s12">
-            <div class="card-panel light-grey">
+<section class="container mx-auto px-4 py-6">
+    <div class="w-full">
 
+        <h1 class="text-gray-900 font-bold text-xl mb-6">Contact us</h1>
 
-        <h4>Contact us</h4>
-
-        <p>Fill the form below to send me a message. <br>I swear i answer you in the 48 hours.</p>
+        <p class="text-gray-600 text-sm">Fill the form below to send me a message. I will answer you in the 48 hours.</p>
 
         {% if success %}
-        <div>
+        <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             Thank you for your message. We'll get back at you shortly.
         </div>
         {% endif %}
 
         <form method="post" name="contact_us" action="{{ url_for('main.contact_us') }}">
             {{form.hidden_tag()}}
-            <div class="input-field">
-                {{form.name()}}
-                <label for="name">Name</label>
+            <div class="mb-4">
+                <label for="name" class="validate font-bold text-gray-600 block mb-2">Name</label>
+                {{form.name(class_='block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow')}}
             </div>
 
             {% for error in form.errors.name %}
-                <p style="color: red;">{{error}}</p>
+                <p class="text-red-600">{{error}}</p>
             {% endfor %}
 
 
-            <div class="input-field">
-                {{form.email()}}
-                <label for="name">Email</label>
+            <div class="mb-4">
+                <label for="name" class="validate font-bold text-gray-600 block mb-2">Email</label>
+                {{form.email(class_='block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow')}}
             </div>
 
             {% for error in form.errors.email %}
-                <p style="color: red;">{{error}}</p>
+                <p class="text-red-600">{{error}}</p>
             {% endfor %}
 
 
-            <div class="input-field">
-                {{form.subject()}}
-                <label for="name">Subject</label>
+            <div class="mb-4">
+                <label for="name" class="validate font-bold text-gray-600 block mb-2">Subject</label>
+                {{form.subject(class_='block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow')}}
             </div>
 
             {% for error in form.errors.subject %}
-            <p style="color: red;">{{error}}</p>
+            <p class="text-red-600">{{error}}</p>
             {% endfor %}
 
 
-            <div class="input-field">
-                {{form.message(class_="materialize-textarea")}}
-                <label for="name">Message</label>
+            <div class="mb-4">
+                <label for="name" class="validate font-bold text-gray-600 block mb-2">Message</label>
+                {{form.message(class_='block appearance-none w-full bg-white border border-gray-200 hover:border-gray-400 px-2 py-2 rounded shadow')}}
             </div>
 
             {% for error in form.errors.message %}
-                <p style="color: red;">{{error}}</p>
+                <p class="text-red-600">{{error}}</p>
             {% endfor %}
 
-            <div class="input-field center-align">
-                <button type="submit" class="waves-effect waves-light btn">Send a message</button>
+            <div class="mb-4">
+                <button type="submit" class="bg-teal-600 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded">Send a message</button>
             </div>
         </form>
 
     </div>
-    </div>
-    </div>
-
-
 </section>
 
 {% endblock %}
