@@ -28,7 +28,6 @@ query {
 ## Query one post
 
 ```
-
 {
   node(id: "UG9zdDox") {
     ... on Post {
@@ -40,5 +39,4 @@ query {
     }
   }
 }
-
 ```
